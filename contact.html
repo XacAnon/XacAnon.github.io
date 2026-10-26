@@ -108,28 +108,32 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
 
 <header>
   <h1 data-text="Contact Xac Anon">Contact Xac Anon</h1>
-  <p>Send a message or reach out for press inquiries</p>
+  <p>For bookings, press and collabs, email me or find me on socials</p>
   <a class="contact-email" href="mailto:business@xacanonmusic.com"><i class="fas fa-envelope"></i> business@xacanonmusic.com</a>
 </header>
 
-<div class="contact-container">
-  <form id="contact-form" action="https://formspree.io/f/xeorbygg" method="POST">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required>
-
-    <label for="email">Email</label>
-    <input type="email" name="_replyto" id="email" required>
-
-    <label for="message">Message</label>
-    <textarea name="message" id="message" rows="6" required></textarea>
-
-    <button type="submit" data-text="Send Message">Send Message</button>
-  </form>
-
-  <div class="overlay" id="confirmation-overlay">
-    <p data-text="Message Sent!">Message Sent!</p>
-  </div>
-</div>
+<section class="socials-grid" aria-label="Socials">
+  <a class="social-card" href="https://instagram.com/xacanon/" target="_blank" rel="noopener">
+    <i class="fab fa-instagram"></i>
+    <span class="social-name">Instagram</span>
+    <span class="social-handle">@xacanon</span>
+  </a>
+  <a class="social-card" href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener">
+    <i class="fab fa-spotify"></i>
+    <span class="social-name">Spotify</span>
+    <span class="social-handle">Xac Anon</span>
+  </a>
+  <a class="social-card" href="https://youtube.com/@XacAnon" target="_blank" rel="noopener">
+    <i class="fab fa-youtube"></i>
+    <span class="social-name">YouTube</span>
+    <span class="social-handle">@XacAnon</span>
+  </a>
+  <a class="social-card" href="https://x.com/XacAnonMusic" target="_blank" rel="noopener">
+    <i class="fab fa-x-twitter"></i>
+    <span class="social-name">X</span>
+    <span class="social-handle">@XacAnonMusic</span>
+  </a>
+</section>
 
 <footer>
   <div class="footer-scroll">© 2026 Xac Anon | Website by Xachariah Anonymous</div>
@@ -179,23 +183,6 @@ if (_hbContact && _nlContact && !_hbContact._bound) {
   _hbContact._bound = true;
   _hbContact.addEventListener('click', () => _nlContact.classList.toggle('active'));
 }
-
-// Contact form
-const form = document.getElementById('contact-form');
-const overlay = document.getElementById('confirmation-overlay');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const formData = new FormData(form);
-  try {
-    const response = await fetch(form.action, { method: form.method, body: formData, headers:{'Accept':'application/json'} });
-    if(response.ok){
-      overlay.classList.add('active');
-      form.reset();
-      setTimeout(()=>overlay.classList.remove('active'),3000);
-    } else { alert("Oops! Something went wrong."); }
-  } catch(err){ alert("Error sending message."); }
-});
 </script>
 
 </body>
