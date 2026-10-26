@@ -25,13 +25,30 @@
   padding: 3rem 16px;
   text-align: center;
 }
-.nf-logo {
-  width: 120px;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 50%;
+/* Floating character from the construction page */
+.nf-glow {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  background: var(--accent);
+  filter: blur(150px);
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+.nf-figure {
+  width: min(220px, 60vw);
+  height: auto;
   margin-bottom: 1.5rem;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08), 0 0 0 9px var(--accent-soft);
+  filter: drop-shadow(0 0 15px rgba(255, 79, 129, 0.4));
+  animation: nfFloat 4s infinite ease-in-out;
+}
+@keyframes nfFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
 }
 .nf-code {
   margin: 0 0 0.6rem;
@@ -81,8 +98,9 @@
 </head>
 <body>
 
+<div class="nf-glow" aria-hidden="true"></div>
 <main class="not-found">
-  <img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon" class="nf-logo" />
+  <img src="https://i.ibb.co/S4qv09pw/de2ed9d3-4a8a-479c-9fff-08d155871fa2-removalai-preview.png" alt="Xac Anon" class="nf-figure" />
   <p class="nf-code">Error 404</p>
   <h1 class="nf-title">Page Not Found</h1>
   <p class="nf-sub">This page isn't valid.</p>
