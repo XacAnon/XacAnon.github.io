@@ -1,5 +1,5 @@
 /* =========================================================
-   Xac Anon — shared site theme
+   Xac Anon: shared site theme
    Loaded after each page's own <style>, so it restyles the
    existing markup (including the Firebase-synced menu)
    without changing any page logic.
@@ -756,3 +756,21 @@ footer .socials-footer a:hover { background: var(--accent); border-color: var(--
   .navbar-container { padding: 0 16px !important; }
   .hero-actions .btn { flex: 1 1 100%; }
 }
+
+/* Contact page business email */
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact-email i { color: var(--accent); }
+.contact-email:hover { border-color: var(--accent); }

@@ -1,7 +1,7 @@
 {
   "name": "Xac Anon Music",
   "short_name": "XacAnon",
-  "description": "The official Xac Anon Music app — listen, read, and explore the world of lo-fi and emo rap.",
+  "description": "The official Xac Anon Music app. Listen, read, and explore the world of lo-fi and emo rap.",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
