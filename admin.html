@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>
+// Show clean addresses (e.g. /music instead of /music.html) for old links
+if (/\.html$/.test(location.pathname)) {
+  history.replaceState(null, "", location.pathname.replace(/(^|\/)index\.html$/, "$1").replace(/\.html$/, "") + location.search + location.hash);
+}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Admin Panel | Xac Anon</title>
 <meta name="robots" content="noindex, nofollow" />
@@ -205,9 +211,9 @@ input:checked + .toggle-slider::before { transform: translateX(24px); }
 
 <nav class="navbar">
   <div class="navbar-container">
-    <a href="index.html" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo"></a>
+    <a href="/" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo"></a>
     <div class="admin-nav-actions">
-      <a href="index.html" class="nav-pill" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i><span>View site</span></a>
+      <a href="/" class="nav-pill" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i><span>View site</span></a>
       <button id="logout-btn" class="nav-pill danger" style="display:none;"><i class="fas fa-right-from-bracket"></i><span>Logout</span></button>
     </div>
   </div>

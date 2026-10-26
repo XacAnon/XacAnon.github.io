@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+// Show clean addresses (e.g. /music instead of /music.html) for old links
+if (/\.html$/.test(location.pathname)) {
+  history.replaceState(null, "", location.pathname.replace(/(^|\/)index\.html$/, "$1").replace(/\.html$/, "") + location.search + location.hash);
+}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xac Anon</title>
 <link rel="manifest" href="manifest.json">
@@ -186,16 +192,16 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 
 <nav class="navbar">
   <div class="navbar-container">
-    <a href="index.html" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo"></a>
+    <a href="/" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo"></a>
     <div class="nav-right" id="global-nav-point">
-      <a href="index.html" class="home-button" data-text="Home">Home</a>
+      <a href="/" class="home-button" data-text="Home">Home</a>
       <div class="hamburger"><i class="fas fa-bars"></i></div>
       <ul class="nav-links">
-        <li><a href="music.html">Music</a></li>
-        <li><a href="lyrics.html">Lyrics</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="/music">Music</a></li>
+        <li><a href="/lyrics">Lyrics</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about">About</a></li>
       </ul>
     </div>
   </div>
@@ -211,7 +217,7 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
     <p class="hero-tagline">Welcome to the sound of the future.</p>
     <div class="hero-actions">
       <a class="btn" href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener"><i class="fab fa-spotify"></i> Listen on Spotify</a>
-      <a class="btn btn-ghost" href="music.html"><i class="fas fa-compact-disc"></i> All music</a>
+      <a class="btn btn-ghost" href="/music"><i class="fas fa-compact-disc"></i> All music</a>
     </div>
     <div class="countdown-container">
       <h2>Next Release Countdown</h2>
@@ -225,7 +231,7 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 <section class="music-section reveal" id="popular">
 <div class="section-head">
   <div><p class="eyebrow">Most played</p><h2>Popular Tracks</h2></div>
-  <a class="section-link" href="music.html">See all <i class="fas fa-arrow-right"></i></a>
+  <a class="section-link" href="/music">See all <i class="fas fa-arrow-right"></i></a>
 </div>
 <div class="music-grid">
 <a class="music-card" data-track-url="https://open.spotify.com/track/6JeA3ahQtwqiTYpQhk73It"></a>
@@ -261,7 +267,7 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
     <i class="fas fa-newspaper cta-icon"></i>
     <h2>Check Out My EPK</h2>
     <p>Everything you need to know about my music, achievements, and press kit.</p>
-    <a class="btn btn-ghost" href="epk.html">View My EPK <i class="fas fa-arrow-right"></i></a>
+    <a class="btn btn-ghost" href="/epk">View My EPK <i class="fas fa-arrow-right"></i></a>
   </div>
   <div class="cta-card cta-card--accent">
     <i class="fas fa-envelope-open-text cta-icon"></i>

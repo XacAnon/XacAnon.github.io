@@ -110,7 +110,7 @@
   </div>
   <div class="nf-actions">
     <a class="btn" href="/"><i class="fas fa-house"></i> Back to Home</a>
-    <a class="btn btn-ghost" href="/music.html"><i class="fas fa-compact-disc"></i> Music</a>
+    <a class="btn btn-ghost" href="/music"><i class="fas fa-compact-disc"></i> Music</a>
   </div>
   <div class="nf-socials">
     <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -124,7 +124,7 @@
 // Show the address the visitor actually tried
 (() => {
   const path = decodeURIComponent(location.pathname);
-  if (path && path !== '/' && path !== '/404.html') {
+  if (path && path !== '/' && path !== '/404.html' && path !== '/404') {
     const line = document.getElementById('nf-path-line');
     line.textContent = '';
     const code = document.createElement('code');

@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+// Show clean addresses (e.g. /music instead of /music.html) for old links
+if (/\.html$/.test(location.pathname)) {
+  history.replaceState(null, "", location.pathname.replace(/(^|\/)index\.html$/, "$1").replace(/\.html$/, "") + location.search + location.hash);
+}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Vault | Xac Anon</title>
 <link rel="icon" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" type="image/png" />
@@ -88,8 +94,8 @@ header p { color:#888; margin-top:10px; }
 
 <nav class="navbar">
     <div class="navbar-container">
-        <a href="index.html" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Logo"></a>
-        <a href="index.html" class="back-home">Back to Music</a>
+        <a href="/" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Logo"></a>
+        <a href="/" class="back-home">Back to Music</a>
     </div>
 </nav>
 
