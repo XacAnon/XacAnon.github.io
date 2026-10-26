@@ -129,6 +129,27 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
   <a href="https://distrokid.com/hyperfollow/xacanon/olympus" class="presave-btn" target="_blank">Presave Latest Song/Album</a>
 </div>
 
+<section class="music-section yt-section">
+  <div class="section-head">
+    <div><p class="eyebrow">Watch</p><h2>YouTube Releases</h2></div>
+    <a class="section-link" href="https://youtube.com/@XacAnon" target="_blank" rel="noopener">Channel <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="music-grid yt-grid">
+    <a class="music-card yt-card" data-yt-list="PLXM4hv-7JEcc" href="https://www.youtube.com/playlist?list=PLXM4hv-7JEcc" target="_blank" rel="noopener">
+      <span class="yt-thumb"><img src="https://i.ytimg.com/vi/xX8W0HWKv9Q/hqdefault.jpg" alt="15" loading="lazy"></span><h3>15</h3>
+    </a>
+    <a class="music-card yt-card" data-yt="rPJQG1JvamM" href="https://www.youtube.com/watch?v=rPJQG1JvamM" target="_blank" rel="noopener">
+      <span class="yt-thumb"><img src="https://i.ytimg.com/vi/rPJQG1JvamM/hqdefault.jpg" alt="Tears Part 2" loading="lazy"></span><h3>Tears Part 2</h3>
+    </a>
+    <a class="music-card yt-card" data-yt="f65Zqg_pTJo" href="https://www.youtube.com/watch?v=f65Zqg_pTJo" target="_blank" rel="noopener">
+      <span class="yt-thumb"><img src="https://i.ytimg.com/vi/f65Zqg_pTJo/hqdefault.jpg" alt="Ashes" loading="lazy"></span><h3>Ashes</h3>
+    </a>
+    <a class="music-card yt-card" data-yt="2S7W9qkUMXs" href="https://www.youtube.com/watch?v=2S7W9qkUMXs" target="_blank" rel="noopener">
+      <span class="yt-thumb"><img src="https://i.ytimg.com/vi/2S7W9qkUMXs/hqdefault.jpg" alt="Darkness &amp; Light" loading="lazy"></span><h3>Darkness &amp; Light</h3>
+    </a>
+  </div>
+</section>
+
 <section class="music-section">
   <h2 class="collapsible" data-section="singles-2026">2026 Singles</h2>
   <div class="music-grid" id="singles-2026"></div>
@@ -156,6 +177,34 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
     <iframe id="spotify-player" src="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 </div>
+
+<div id="yt-modal" class="modal">
+  <div class="modal-content yt-modal-content">
+    <span class="modal-close yt-close"><i class="fas fa-times"></i> Close Player</span>
+    <div class="yt-frame"><iframe id="yt-player" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  </div>
+</div>
+
+<script>
+// YouTube releases open in a player instead of leaving the site
+(() => {
+  const modal = document.getElementById('yt-modal');
+  const player = document.getElementById('yt-player');
+  const close = () => { modal.style.display = 'none'; player.src = ''; };
+  document.querySelectorAll('.yt-card').forEach(card => {
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      player.src = card.dataset.ytList
+        ? `https://www.youtube-nocookie.com/embed/videoseries?list=${card.dataset.ytList}&autoplay=1&rel=0`
+        : `https://www.youtube-nocookie.com/embed/${card.dataset.yt}?autoplay=1&rel=0`;
+      modal.style.display = 'flex';
+    });
+  });
+  modal.querySelector('.yt-close').addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display === 'flex') close(); });
+})();
+</script>
 
 <footer>
   <div>© 2026 Xac Anon | Musical Artist | Newcastle, NSW</div>

@@ -811,3 +811,38 @@ footer .socials-footer a:hover { background: var(--accent); border-color: var(--
   background: var(--surface-2);
 }
 .social-card:hover i { color: var(--text); }
+
+/* Music page YouTube releases */
+.yt-section { padding-bottom: 0.5rem !important; }
+.yt-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)) !important; }
+/* YouTube thumbnails letterbox square cover art; crop to the art */
+.yt-thumb {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+}
+.yt-thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  object-fit: cover;
+  transform: scale(1.34);
+}
+.yt-card::after { content: "\f04b"; background: #ff0033; }
+.yt-modal-content { max-width: 900px !important; width: calc(100% - 32px) !important; }
+.yt-frame { position: relative; aspect-ratio: 16 / 9; }
+.yt-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  border-radius: 12px !important;
+}
+@media (max-width: 600px) {
+  .yt-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
+  .yt-card h3 { font-size: 0.85rem !important; }
+}
