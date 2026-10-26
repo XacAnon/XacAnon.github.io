@@ -164,6 +164,11 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
   .nav-links li a { font-size:0.9rem; padding:0.6rem 1rem; }
 }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/theme.css" />
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
@@ -197,19 +202,31 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 </nav>
 
 <div id="main-content">
-<header style="text-align:center; padding:2rem 1rem;">
-<img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo" />
-<h1>Xac Anon</h1>
-<p class="tagline">Welcome to the sound of the future.</p>
-<div class="countdown-container">
-<h2>Next Release Countdown</h2>
-<p id="countdown">Loading...</p>
-<p>Release Date: <span id="release-date"></span></p>
-</div>
-</header>
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <img class="hero-avatar" src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon" />
+    <p class="hero-eyebrow">Lo-fi &middot; Emo rap &middot; Newcastle, NSW</p>
+    <h1 class="hero-title">Xac Anon</h1>
+    <p class="hero-tagline">Welcome to the sound of the future.</p>
+    <div class="hero-actions">
+      <a class="btn" href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener"><i class="fab fa-spotify"></i> Listen on Spotify</a>
+      <a class="btn btn-ghost" href="music.html"><i class="fas fa-compact-disc"></i> All music</a>
+    </div>
+    <div class="countdown-container">
+      <h2>Next Release Countdown</h2>
+      <p id="countdown">Loading...</p>
+      <p class="release-line">Release Date: <span id="release-date"></span></p>
+    </div>
+  </div>
+  <a class="hero-scroll" href="#popular" aria-label="Scroll to music"><i class="fas fa-chevron-down"></i></a>
+</section>
 
-<section class="music-section">
-<h2>Popular Tracks</h2>
+<section class="music-section reveal" id="popular">
+<div class="section-head">
+  <div><p class="eyebrow">Most played</p><h2>Popular Tracks</h2></div>
+  <a class="section-link" href="music.html">See all <i class="fas fa-arrow-right"></i></a>
+</div>
 <div class="music-grid">
 <a class="music-card" data-track-url="https://open.spotify.com/track/4GP0fsN0JShmCb2emoO7PD"></a>
 <a class="music-card" data-track-url="https://open.spotify.com/track/0sF1xBC8jlt88Ah8AuLpY5"></a>
@@ -217,8 +234,10 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 </div>
 </section>
 
-<section class="music-section">
-<h2>Recent Releases</h2>
+<section class="music-section reveal">
+<div class="section-head">
+  <div><p class="eyebrow">Just dropped</p><h2>Recent Releases</h2></div>
+</div>
 <div class="music-grid">
 <a class="music-card" data-track-url="https://open.spotify.com/track/4K0sC4yvqVhWAXZxSmQdOz?si=3ecc29f4915e4867"></a>
 <a class="music-card" data-track-url="https://open.spotify.com/track/1cDklONzjw2qqYIzbMAOTc?si=39185f9d454c4056"></a>
@@ -226,8 +245,10 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 </div>
 </section>
 
-<section id="featured-music" class="music-section">
-<h2>Featured Music</h2>
+<section id="featured-music" class="music-section reveal">
+<div class="section-head">
+  <div><p class="eyebrow">Handpicked</p><h2>Featured Music</h2></div>
+</div>
 <div class="music-grid">
 <a class="music-card" data-track-url="https://open.spotify.com/track/0YbIjMC4dNebTEFwYJl2Mr"></a>
 <a class="music-card" data-track-url="https://open.spotify.com/track/2kBQzsiHEeBFwKnEDo13Rl"></a>
@@ -235,16 +256,18 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 </div>
 </section>
 
-<section class="epk-section">
-<h2>Check Out My EPK</h2>
-<p>Everything you need to know about my music, achievements, and press kit.</p>
-<a href="epk.html" data-text="View My EPK">View My EPK</a>
-</section>
-
-<section class="subscribe-section">
-  <div class="subscribe-box">
-    <h3>Subscribe for Updates</h3>
-    <a href="https://mailchi.mp/583d00f97121/xac-anon-newsletter" target="_blank" id="subscribe-button">Subscribe to Mail List</a>
+<section class="cta-band reveal">
+  <div class="cta-card">
+    <i class="fas fa-newspaper cta-icon"></i>
+    <h2>Check Out My EPK</h2>
+    <p>Everything you need to know about my music, achievements, and press kit.</p>
+    <a class="btn btn-ghost" href="epk.html">View My EPK <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="cta-card cta-card--accent">
+    <i class="fas fa-envelope-open-text cta-icon"></i>
+    <h2>Subscribe for Updates</h2>
+    <p>New releases, drops and behind-the-scenes, straight to your inbox.</p>
+    <a href="https://mailchi.mp/583d00f97121/xac-anon-newsletter" target="_blank" rel="noopener" id="subscribe-button">Subscribe to Mail List</a>
   </div>
 </section>
 
@@ -261,8 +284,22 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 <a href="https://instagram.com/xacanon/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 <a href="https://x.com/XacAnonMusic" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
 <a href="https://youtube.com/@XacAnon" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+<a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
 </div>
+<p class="footer-copy">&copy; 2026 Xac Anon. All Rights Reserved.</p>
 </footer>
+
+<script>
+// Fade sections in as they scroll into view
+(() => {
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+  }), { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+})();
+</script>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
