@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Xac Anon</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#09080d">
+<link rel="icon" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" type="image/png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+<!-- Absolute paths: this page is served for any missing URL, at any depth -->
+<link rel="stylesheet" href="/assets/theme.css" />
+
+<style>
+/* Same layout as the maintenance "Back Soon" screen */
+.not-found {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 16px;
+  text-align: center;
+}
+.nf-logo {
+  width: 120px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08), 0 0 0 9px var(--accent-soft);
+}
+.nf-code {
+  margin: 0 0 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.nf-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.nf-sub { margin: 0 0 1.5rem; max-width: 500px; color: var(--muted); font-size: 1rem; }
+.nf-message {
+  max-width: 480px;
+  padding: 1rem 1.75rem;
+  line-height: 1.7;
+  color: #d9d4e0;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+}
+.nf-message code {
+  font-size: 0.9em;
+  color: var(--text);
+  word-break: break-all;
+}
+.nf-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+.nf-socials { display: flex; gap: 0.6rem; justify-content: center; margin-top: 2rem; }
+.nf-socials a {
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1.05rem;
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.nf-socials a:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+</style>
+</head>
+<body>
+
+<main class="not-found">
+  <img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon" class="nf-logo" />
+  <p class="nf-code">Error 404</p>
+  <h1 class="nf-title">Page Not Found</h1>
+  <p class="nf-sub">This page isn't valid.</p>
+  <div class="nf-message">
+    <span id="nf-path-line">The link you followed doesn't exist on xacanonmusic.com.</span>
+    It may have been moved, renamed or never existed.
+  </div>
+  <div class="nf-actions">
+    <a class="btn" href="/"><i class="fas fa-house"></i> Back to Home</a>
+    <a class="btn btn-ghost" href="/music.html"><i class="fas fa-compact-disc"></i> Music</a>
+  </div>
+  <div class="nf-socials">
+    <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://x.com/xacanonau" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://youtube.com/@XacAnon" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+  </div>
+</main>
+
+<script>
+// Show the address the visitor actually tried
+(() => {
+  const path = decodeURIComponent(location.pathname);
+  if (path && path !== '/' && path !== '/404.html') {
+    const line = document.getElementById('nf-path-line');
+    line.textContent = '';
+    const code = document.createElement('code');
+    code.textContent = path;
+    line.append(code, " doesn't exist on xacanonmusic.com.");
+  }
+})();
+</script>
+
+</body>
+</html>
