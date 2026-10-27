@@ -24,14 +24,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Refresh releases, videos and release pages
+      - name: Install image library
+        run: python3 -m pip install --quiet pillow
+
+      - name: Refresh releases, videos, release pages and share image
         run: python3 .github/scripts/update_site_data.py
 
       - name: Commit and publish if changed
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add data releases sitemap.xml
+          git add data releases sitemap.xml assets/img/share.jpg
           if git diff --cached --quiet; then
             echo "Nothing changed."
             exit 0

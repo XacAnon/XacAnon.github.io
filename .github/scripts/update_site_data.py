@@ -11,6 +11,7 @@ Writes:
   data/videos.json          videos page
   releases/<slug>.html      one page per release, plus releases/index.html
   sitemap.xml
+  assets/img/share.jpg      link-preview image, when the latest release changes
 
 Hand-edited extras per release (Spotify album, YouTube video, story) live in
 data/releases-extra.json, keyed by slug.
@@ -265,7 +266,10 @@ def main():
         sys.exit("No releases returned from Apple; leaving everything alone.")
     theme_v = hashlib.md5(open(path("assets", "theme.css"), "rb").read()).hexdigest()[:8]
 
-    write_json("data/latest-release.json", latest_release_data(releases))
+    latest = latest_release_data(releases)
+    if write_json("data/latest-release.json", latest) or not os.path.exists(path("assets", "img", "share.jpg")):
+        from make_images import share_card  # needs Pillow; only when the latest release changes
+        share_card(latest["latest"])
     public = [{k: v for k, v in r.items() if k != "appleId"} for r in releases]
     write_json("data/releases.json", public)
     write_json("data/videos.json", update_videos())

@@ -6,7 +6,7 @@ pages were made from it too. Paths are absolute so pages work in any folder.
 from html import escape
 
 SITE = "https://www.xacanonmusic.com"
-DEFAULT_IMAGE = SITE + "/assets/img/xac-anon.jpg"
+DEFAULT_IMAGE = SITE + "/assets/img/share.jpg"
 
 SOCIALS = [
     ("Instagram", "https://instagram.com/xacanon/", "fab fa-instagram"),
@@ -65,11 +65,12 @@ def page(*, title, path, description, body, theme_version, image=DEFAULT_IMAGE,
 <meta property="og:description" content="{d}" />
 <meta property="og:url" content="{SITE}{path}" />
 <meta property="og:image" content="{escape(image)}" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="{"summary_large_image" if image == DEFAULT_IMAGE else "summary"}" />
 <meta name="twitter:title" content="{t}" />
 <meta name="twitter:description" content="{d}" />
 <meta name="twitter:image" content="{escape(image)}" />
-<link rel="icon" type="image/jpeg" href="/assets/img/xac-anon.jpg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#09080d">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
