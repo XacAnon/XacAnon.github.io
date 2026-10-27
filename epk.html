@@ -182,7 +182,9 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
     <ul>
       <li>Performed at <strong>BandLab Press Play Sydney</strong> as a <em>Pass the Aux</em> performer.</li>
     </ul>
-    <img src="/assets/press/bandlab-press-play-sydney-pass.jpg" alt="BandLab Press Play Sydney 'Pass the Aux Performer' lanyard pass" loading="lazy" />
+    <a class="epk-live-thumb" href="/assets/press/bandlab-press-play-sydney-pass.jpg" data-lightbox="BandLab Press Play Sydney pass">
+      <img src="/assets/press/bandlab-press-play-sydney-pass.jpg" alt="BandLab Press Play Sydney 'Pass the Aux Performer' lanyard pass" loading="lazy" />
+    </a>
   </div>
   <h3>Collaborations</h3>
   <ul>
@@ -198,21 +200,21 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
 
 <section class="epk-assets">
   <h2>Press Photos &amp; Artwork</h2>
-  <p class="card-sub">Free to use for press and promotion. Click a photo to download it.</p>
+  <p class="card-sub">Free to use for press and promotion. Click a photo to view it full size and download.</p>
   <div class="asset-grid">
-    <a class="asset" href="/assets/press/xac-anon-portrait-train.jpg" download>
+    <a class="asset" href="/assets/press/xac-anon-portrait-train.jpg" data-lightbox="Press photo">
       <img src="/assets/press/xac-anon-portrait-train.jpg" alt="Xac Anon standing in a train carriage" loading="lazy" />
       <span>Press photo <small>JPG &middot; 1024 &times; 1014</small></span>
     </a>
-    <a class="asset" href="/assets/press/xac-anon-portrait-hat.jpg" download>
+    <a class="asset" href="/assets/press/xac-anon-portrait-hat.jpg" data-lightbox="Press photo">
       <img src="/assets/press/xac-anon-portrait-hat.jpg" alt="Xac Anon in a black hat and aviator sunglasses" loading="lazy" />
       <span>Press photo <small>JPG &middot; 1066 &times; 1064</small></span>
     </a>
-    <a class="asset" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" target="_blank" rel="noopener">
+    <a class="asset" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" target="_blank" rel="noopener" data-lightbox="Profile photo">
       <img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon profile photo" />
       <span>Profile photo <small>JPG &middot; 640 &times; 640</small></span>
     </a>
-    <a class="asset asset--transparent" href="https://i.ibb.co/S4qv09pw/de2ed9d3-4a8a-479c-9fff-08d155871fa2-removalai-preview.png" target="_blank" rel="noopener">
+    <a class="asset asset--transparent" href="https://i.ibb.co/S4qv09pw/de2ed9d3-4a8a-479c-9fff-08d155871fa2-removalai-preview.png" target="_blank" rel="noopener" data-lightbox="Character artwork">
       <img src="https://i.ibb.co/S4qv09pw/de2ed9d3-4a8a-479c-9fff-08d155871fa2-removalai-preview.png" alt="Xac Anon character artwork" />
       <span>Character artwork <small>PNG &middot; transparent</small></span>
     </a>
@@ -241,6 +243,46 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
   <p class="footer-copy">&copy; 2026 Xac Anon &middot; Newcastle, NSW &middot; <a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></p>
   <p class="footer-credit">Website by Xachariah Anonymous</p>
 </footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox-close" type="button" aria-label="Close"><i class="fas fa-xmark"></i></button>
+  <figure>
+    <img id="lightbox-img" alt="" />
+    <figcaption>
+      <span id="lightbox-caption"></span>
+      <a class="btn" id="lightbox-download" download target="_blank" rel="noopener"><i class="fas fa-download"></i> Download</a>
+    </figcaption>
+  </figure>
+</div>
+
+<script>
+// Photo viewer: click any EPK photo to see it full size
+(() => {
+  const box = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
+  const download = document.getElementById('lightbox-download');
+  let lastFocus = null;
+  const close = () => { box.hidden = true; img.src = ''; document.body.style.overflow = ''; lastFocus && lastFocus.focus(); };
+  document.querySelectorAll('[data-lightbox]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      lastFocus = link;
+      const thumb = link.querySelector('img');
+      img.src = link.href;
+      img.alt = thumb ? thumb.alt : '';
+      caption.textContent = link.dataset.lightbox;
+      download.href = link.href;
+      box.hidden = false;
+      document.body.style.overflow = 'hidden';
+      box.querySelector('.lightbox-close').focus();
+    });
+  });
+  box.querySelector('.lightbox-close').addEventListener('click', close);
+  box.addEventListener('click', e => { if (e.target === box) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !box.hidden) close(); });
+})();
+</script>
 
 <div id="trackModal" class="modal">
   <span class="close" onclick="closeModal()">&times;</span>
