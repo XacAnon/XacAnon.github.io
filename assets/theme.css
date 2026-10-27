@@ -1012,3 +1012,19 @@ footer .socials { flex-wrap: wrap; }
 .bio, .bio p, .highlights, .contact-section { text-align: left !important; }
 .bio h2, .highlights h2, .contact-section h2 { text-align: left !important; }
 .epk-assets h2 { color: var(--text) !important; text-align: left !important; text-transform: none !important; }
+
+/* EPK live highlight with the event pass photo */
+.epk-live { display: flex; align-items: flex-start; gap: 1.25rem; }
+.epk-live ul { flex: 1; }
+.epk-live img {
+  width: 150px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line-strong);
+  flex-shrink: 0;
+}
+@media (max-width: 520px) { .epk-live { flex-direction: column; } .epk-live img { width: 100%; max-width: 220px; } }
+@media print { .epk-live img { width: 90px; } }
+.asset-grid { grid-template-columns: repeat(2, 1fr) !important; }
+@media (max-width: 420px) { .asset-grid { gap: 0.6rem; } .asset span { flex-direction: column; gap: 0; font-size: 0.85rem; } }
