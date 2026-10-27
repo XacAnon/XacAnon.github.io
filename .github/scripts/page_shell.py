@@ -35,7 +35,7 @@ def page(*, title, path, description, body, theme_version, image=DEFAULT_IMAGE,
       <div class="hamburger"><i class="fas fa-bars"></i></div>
       <ul class="nav-links">
 {menu}
-        <li><a href="https://shop.xacanonmusic.com" target="_blank" rel="noopener">Shop</a></li>
+        <li><a href="https://shop.xacanonmusic.com">Shop</a></li>
       </ul>
     </div>
   </div>
