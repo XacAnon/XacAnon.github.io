@@ -404,7 +404,7 @@ body header p { color: var(--muted); font-size: 1.05rem; margin: 0; }
   color: var(--accent) !important;
 }
 .collapsible.active { border-color: rgba(255, 79, 129, 0.35) !important; }
-.featured-container { padding: 0 1.25rem 1rem !important; }
+.featured-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; padding: 0 1.25rem 1rem !important; }
 
 /* ---------- Content panels (about, blog, lyrics, EPK, contact) ---------- */
 .about-container,
