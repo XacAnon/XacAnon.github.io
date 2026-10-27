@@ -264,7 +264,8 @@ def main():
     releases = load_releases()
     if not releases:
         sys.exit("No releases returned from Apple; leaving everything alone.")
-    theme_v = hashlib.md5(open(path("assets", "theme.css"), "rb").read()).hexdigest()[:8]
+    # Hash with Unix line endings so the version matches on Windows and on GitHub
+    theme_v = hashlib.md5(open(path("assets", "theme.css"), "rb").read().replace(b"\r\n", b"\n")).hexdigest()[:8]
 
     latest = latest_release_data(releases)
     if write_json("data/latest-release.json", latest) or not os.path.exists(path("assets", "img", "share.jpg")):
