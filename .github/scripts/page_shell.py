@@ -48,7 +48,7 @@ def page(*, title, path, description, body, theme_version, image=DEFAULT_IMAGE,
 {icons}
   </div>
   <p class="footer-copy">&copy; 2026 Xac Anon &middot; Newcastle, NSW &middot; <a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></p>
-  <p class="footer-credit">Website by Xachariah Anonymous</p>
+  <p class="footer-credit">Website by Xac Anon</p>
 </footer>
 """ if footer else ""
     return f"""<!DOCTYPE html>
