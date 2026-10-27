@@ -17,12 +17,12 @@ if (/\.html$/.test(location.pathname)) {
 <meta property="og:title" content="Xac Anon | EPK" />
 <meta property="og:description" content="Electronic press kit for Xac Anon: bio, quick facts, selected tracks, press photos and contact details." />
 <meta property="og:url" content="https://www.xacanonmusic.com/epk" />
-<meta property="og:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta property="og:image" content="https://www.xacanonmusic.com/assets/img/xac-anon.jpg" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Xac Anon | EPK" />
 <meta name="twitter:description" content="Electronic press kit for Xac Anon: bio, quick facts, selected tracks, press photos and contact details." />
-<meta name="twitter:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
-<link rel="icon" type="image/jpeg" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta name="twitter:image" content="https://www.xacanonmusic.com/assets/img/xac-anon.jpg" />
+<link rel="icon" type="image/jpeg" href="/assets/img/xac-anon.jpg" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Friz+Quadrata&family=Medici&display=swap" rel="stylesheet" />
   <link rel="manifest" href="manifest.json">
@@ -101,19 +101,21 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/theme.css?v=613745b6" />
+<link rel="stylesheet" href="assets/theme.css?v=ee651844" />
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-container">
-    <a href="/" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo"></a>
+    <a href="/" class="nav-logo"><img src="/assets/img/xac-anon.jpg" alt="Xac Anon Logo"></a>
     <div class="nav-right">
       <a href="/" class="home-button" data-text="Home">Home</a>
       <div class="hamburger"><i class="fas fa-bars"></i></div>
       <ul class="nav-links">
         <li><a href="/music">Music</a></li>
+        <li><a href="/videos">Videos</a></li>
+        <li><a href="/shows">Shows</a></li>
         <li><a href="/lyrics">Lyrics</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/contact">Contact</a></li>
@@ -125,7 +127,7 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
 </nav>
 
 <header class="epk-hero">
-  <img class="epk-avatar" src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon" />
+  <img class="epk-avatar" src="/assets/img/xac-anon.jpg" alt="Xac Anon" />
   <div class="epk-hero-text">
     <p class="eyebrow">Electronic Press Kit</p>
     <h1>Xac Anon</h1>
@@ -159,7 +161,7 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
   <div class="epk-platforms no-print">
     <a class="btn btn-ghost" href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener"><i class="fab fa-spotify"></i> Spotify</a>
     <a class="btn btn-ghost" href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener"><i class="fab fa-apple"></i> Apple Music</a>
-    <a class="btn btn-ghost" href="https://youtube.com/@XacAnon" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube</a>
+    <a class="btn btn-ghost" href="https://youtube.com/@XacAnonRS" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube</a>
     <a class="btn btn-ghost" href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener"><i class="fab fa-soundcloud"></i> SoundCloud</a>
   </div>
 </section>
@@ -179,7 +181,7 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
   </ul>
   <h3>Live</h3>
   <div class="epk-live">
-    <ul>
+    <ul id="epk-live-list">
       <li>Performed at <strong>BandLab Press Play Sydney</strong> as a <em>Pass the Aux</em> performer.</li>
     </ul>
     <a class="epk-live-thumb" href="/assets/press/bandlab-press-play-sydney-pass.jpg" data-lightbox="BandLab Press Play Sydney pass">
@@ -198,6 +200,11 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
   </ul>
 </section>
 
+<section class="epk-press" id="epk-press" hidden>
+  <h2>Press &amp; Features</h2>
+  <div class="press-list" id="epk-press-list"></div>
+</section>
+
 <section class="epk-assets">
   <h2>Press Photos &amp; Artwork</h2>
   <p class="card-sub">Free to use for press and promotion. Click a photo to view it full size and download.</p>
@@ -210,13 +217,13 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
       <img src="/assets/press/xac-anon-portrait-hat.jpg" alt="Xac Anon in a black hat and aviator sunglasses" loading="lazy" />
       <span>Press photo <small>JPG &middot; 1066 &times; 1064</small></span>
     </a>
-    <a class="asset" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" target="_blank" rel="noopener" data-lightbox="Profile photo">
-      <img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon profile photo" />
+    <a class="asset" href="/assets/img/xac-anon.jpg" target="_blank" rel="noopener" data-lightbox="Profile photo">
+      <img src="/assets/img/xac-anon.jpg" alt="Xac Anon profile photo" />
       <span>Profile photo <small>JPG &middot; 640 &times; 640</small></span>
     </a>
-    <a class="asset asset--transparent" href="https://i.ibb.co/S4qv09pw/de2ed9d3-4a8a-479c-9fff-08d155871fa2-removalai-preview.png" target="_blank" rel="noopener" data-lightbox="Character artwork">
-      <img src="https://i.ibb.co/S4qv09pw/de2ed9d3-4a8a-479c-9fff-08d155871fa2-removalai-preview.png" alt="Xac Anon character artwork" />
-      <span>Character artwork <small>PNG &middot; transparent</small></span>
+    <a class="asset asset--transparent" href="/assets/img/xac-anon-character.png" target="_blank" rel="noopener" data-lightbox="Character artwork">
+      <img src="/assets/img/xac-anon-character.png" alt="Xac Anon character artwork" />
+      <span>Character artwork <small>PNG &middot; 600 &times; 600</small></span>
     </a>
   </div>
 </section>
@@ -234,7 +241,7 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
     <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
     <a href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
-    <a href="https://youtube.com/@XacAnon" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://youtube.com/@XacAnonRS" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     <a href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
     <a href="https://www.tiktok.com/@xacanon" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
     <a href="https://x.com/xacanonau" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -337,7 +344,7 @@ function closeModal(){
 <!-- Global Nav Loader -->
 <script type="module">
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 const _fbConfig = {
   apiKey: "AIzaSyD5ErOWtxBdfL3Z0o_TwYnii1GflZ0fYdc",
   authDomain: "xacanonwebsite.firebaseapp.com",
@@ -365,6 +372,46 @@ try {
     }
   }
 } catch(e) { console.warn("Nav loader:", e); }
+
+// ===== PRESS & FEATURES (admin panel → Press tab) =====
+const pressEsc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+async function loadPress(listId, wrapId, limit) {
+  try {
+    const snap = await getDocs(collection(_db, "press"));
+    const items = snap.docs.map(d => d.data())
+      .sort((a, b) => (b.date?.toMillis?.() || 0) - (a.date?.toMillis?.() || 0))
+      .slice(0, limit || 99);
+    if (!items.length) return;
+    document.getElementById(listId).innerHTML = items.map(p => {
+      const tag = p.link ? "a" : "div";
+      const href = p.link ? ` href="${pressEsc(p.link)}" target="_blank" rel="noopener"` : "";
+      const when = p.date?.toDate ? p.date.toDate().toLocaleDateString(undefined, { month: "long", year: "numeric" }) : "";
+      return `<${tag} class="press-item"${href}>
+        ${p.kind ? `<span class="press-kind">${pressEsc(p.kind)}</span>` : ""}
+        <span class="press-outlet">${pressEsc(p.outlet)}</span>
+        ${p.headline ? `<span class="press-title">${pressEsc(p.headline)}</span>` : ""}
+        ${p.quote ? `<p class="press-quote">&ldquo;${pressEsc(p.quote)}&rdquo;</p>` : ""}
+        ${when ? `<span class="press-date">${when}</span>` : ""}
+      </${tag}>`;
+    }).join("");
+    document.getElementById(wrapId).hidden = false;
+  } catch (err) { console.warn("Press:", err); }
+}
+loadPress("epk-press-list", "epk-press");
+
+// ===== LIVE (admin panel → Shows tab) =====
+try {
+  const shows = (await getDocs(collection(_db, "shows"))).docs.map(d => d.data());
+  if (shows.length) {
+    const t = s => (s.date?.toMillis?.() || 0);
+    shows.sort((a, b) => t(b) - t(a));
+    document.getElementById("epk-live-list").innerHTML = shows.map(s => {
+      const when = s.date?.toDate ? s.date.toDate().toLocaleDateString(undefined, { month: "long", year: "numeric" }) : (s.dateText || "");
+      const place = [s.venue, s.city].filter(Boolean).map(pressEsc).join(", ");
+      return `<li><strong>${pressEsc(s.title)}</strong>${s.role ? ` as ${pressEsc(s.role)}` : ""}${place ? ` (${place})` : ""}${when ? `, ${pressEsc(when)}` : ""}.</li>`;
+    }).join("") + `<li><a href="/shows">See all shows</a></li>`;
+  }
+} catch (err) { console.warn("Shows:", err); }
 </script>
 </body>
 </html>

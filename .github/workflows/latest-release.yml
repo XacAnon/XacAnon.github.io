@@ -1,7 +1,8 @@
 name: Update latest release
 
-# Keeps data/latest-release.json (home countdown + music page presave button)
-# in sync with Apple Music. Runs every 6 hours; can also be started by hand from the
+# Keeps the site's generated data in sync with Apple Music and YouTube:
+# home countdown, music page button, links page, videos page, release pages
+# and sitemap. Runs every 6 hours; can also be started by hand from the
 # Actions tab with "Run workflow".
 on:
   schedule:
@@ -11,6 +12,7 @@ on:
 permissions:
   contents: write
   pages: write
+  actions: write
 
 concurrency:
   group: latest-release
@@ -22,21 +24,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch latest release
-        run: python3 .github/scripts/update_release.py
+      - name: Refresh releases, videos and release pages
+        run: python3 .github/scripts/update_site_data.py
 
       - name: Commit and publish if changed
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if git diff --quiet -- data/latest-release.json; then
-            echo "Release data unchanged."
+          git add data releases sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest-release.json
-          git commit -m "Update latest release data"
+          git commit -m "Update release and video data"
           git push
           # Pushes made with the workflow token don't always rebuild Pages, so ask for a build.
           gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+
+      - name: Keep this schedule from being paused
+        # GitHub pauses scheduled workflows after 60 days without repo activity.
+        # Re-enabling the workflow resets that timer without making a commit.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/latest-release.yml/enable" || true

@@ -10,12 +10,12 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg",
+      "src": "/assets/img/xac-anon.jpg",
       "sizes": "192x192",
       "type": "image/jpeg"
     },
     {
-      "src": "https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg",
+      "src": "/assets/img/xac-anon.jpg",
       "sizes": "512x512",
       "type": "image/jpeg"
     }
@@ -25,19 +25,19 @@
       "name": "Blog",
       "short_name": "Blog",
       "url": "/blog",
-      "icons": [{ "src": "https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg", "sizes": "96x96", "type": "image/jpeg" }]
+      "icons": [{ "src": "/assets/img/xac-anon.jpg", "sizes": "96x96", "type": "image/jpeg" }]
     },
     {
       "name": "Music",
       "short_name": "Music",
       "url": "/music",
-      "icons": [{ "src": "https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg", "sizes": "96x96", "type": "image/jpeg" }]
+      "icons": [{ "src": "/assets/img/xac-anon.jpg", "sizes": "96x96", "type": "image/jpeg" }]
     },
     {
       "name": "About",
       "short_name": "About",
       "url": "/about",
-      "icons": [{ "src": "https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg", "sizes": "96x96", "type": "image/jpeg" }]
+      "icons": [{ "src": "/assets/img/xac-anon.jpg", "sizes": "96x96", "type": "image/jpeg" }]
     }
   ],
   "categories": ["music", "blog", "artist", "lofi", "emo rap"]

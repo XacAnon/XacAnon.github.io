@@ -17,12 +17,12 @@ if (/\.html$/.test(location.pathname)) {
 <meta property="og:title" content="Music | Xac Anon" />
 <meta property="og:description" content="Stream every release from Xac Anon: singles, the album Purgatory, YouTube exclusives and features." />
 <meta property="og:url" content="https://www.xacanonmusic.com/music" />
-<meta property="og:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta property="og:image" content="https://www.xacanonmusic.com/assets/img/xac-anon.jpg" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Music | Xac Anon" />
 <meta name="twitter:description" content="Stream every release from Xac Anon: singles, the album Purgatory, YouTube exclusives and features." />
-<meta name="twitter:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
-<link rel="icon" type="image/jpeg" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta name="twitter:image" content="https://www.xacanonmusic.com/assets/img/xac-anon.jpg" />
+<link rel="icon" type="image/jpeg" href="/assets/img/xac-anon.jpg" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Friz+Quadrata&family=Medici&display=swap" rel="stylesheet" />
 <link rel="manifest" href="manifest.json">
@@ -117,19 +117,21 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/theme.css?v=613745b6" />
+<link rel="stylesheet" href="assets/theme.css?v=ee651844" />
 <script src="/assets/release.js?v=6b6523d8" defer></script>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-container">
-    <a href="/" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo"></a>
+    <a href="/" class="nav-logo"><img src="/assets/img/xac-anon.jpg" alt="Xac Anon Logo"></a>
     <div class="nav-right">
       <a href="/" class="home-button">Home</a>
       <div class="hamburger"><i class="fas fa-bars"></i></div>
       <ul class="nav-links">
         <li><a href="/music">Music</a></li>
+        <li><a href="/videos">Videos</a></li>
+        <li><a href="/shows">Shows</a></li>
         <li><a href="/lyrics">Lyrics</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/contact">Contact</a></li>
@@ -150,7 +152,7 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
 <section class="music-section yt-section">
   <div class="section-head">
     <div><p class="eyebrow">Watch</p><h2>YouTube Exclusive</h2></div>
-    <a class="section-link" href="https://youtube.com/@XacAnon" target="_blank" rel="noopener">Channel <i class="fas fa-arrow-right"></i></a>
+    <a class="section-link" href="/videos">All videos <i class="fas fa-arrow-right"></i></a>
   </div>
   <div class="music-grid yt-grid">
     <a class="music-card yt-card" data-yt-list="PLXM4hv-7JEcc" href="https://www.youtube.com/playlist?list=PLXM4hv-7JEcc" target="_blank" rel="noopener">
@@ -229,7 +231,7 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
     <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
     <a href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
-    <a href="https://youtube.com/@XacAnon" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://youtube.com/@XacAnonRS" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     <a href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
     <a href="https://www.tiktok.com/@xacanon" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
     <a href="https://x.com/xacanonau" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -268,6 +270,12 @@ if (_hbMusic && _nlMusic && !_hbMusic._bound) {
   _hbMusic.addEventListener('click', () => _nlMusic.classList.toggle('active'));
 }
 
+// Release pages (built by the site updater) keyed by simplified title
+const norm = t => String(t || '').toLowerCase().replace(/\(feat[^)]*\)/g, '').replace(/[^a-z0-9]+/g, '');
+fetch('/data/releases.json').then(r => r.json()).then(list => {
+  window._releasePages = Object.fromEntries(list.map(r => [norm(r.title), r.slug]));
+}).catch(() => {});
+
 async function loadGrid(containerId, urls) {
   const container = document.getElementById(containerId);
   container.innerHTML = ""; 
@@ -281,6 +289,8 @@ async function loadGrid(containerId, urls) {
       .then(res => res.json())
       .then(d => {
         card.innerHTML = `<img src="${d.thumbnail_url}"><h3>${d.title}</h3>`;
+        const page = (window._releasePages || {})[norm(d.title)];
+        if (page) card.insertAdjacentHTML('beforeend', `<a class="release-more" href="/releases/${page}" onclick="event.stopPropagation()">Song page <i class="fas fa-arrow-right"></i></a>`);
       })
       .catch(() => {
         card.innerHTML = `<h3 style="color:#ff4f81;">Access Granted</h3>`;

@@ -14,13 +14,13 @@ if (/\.html$/.test(location.pathname)) {
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#09080d">
 
-<link rel="icon" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" type="image/jpeg" />
+<link rel="icon" href="/assets/img/xac-anon.jpg" type="image/jpeg" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/theme.css?v=613745b6" />
+<link rel="stylesheet" href="assets/theme.css?v=ee651844" />
 
 <style>
 /* ===== Admin layout (builds on assets/theme.css) ===== */
@@ -211,7 +211,7 @@ input:checked + .toggle-slider::before { transform: translateX(24px); }
 
 <nav class="navbar">
   <div class="navbar-container">
-    <a href="/" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo"></a>
+    <a href="/" class="nav-logo"><img src="/assets/img/xac-anon.jpg" alt="Xac Anon Logo"></a>
     <div class="admin-nav-actions">
       <a href="/" class="nav-pill" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i><span>View site</span></a>
       <button id="logout-btn" class="nav-pill danger" style="display:none;"><i class="fas fa-right-from-bracket"></i><span>Logout</span></button>
@@ -222,7 +222,7 @@ input:checked + .toggle-slider::before { transform: translateX(24px); }
 <main class="admin-shell">
 
 <div id="login-container" class="card">
-  <img class="login-avatar" src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="" />
+  <img class="login-avatar" src="/assets/img/xac-anon.jpg" alt="" />
   <h2>Admin Login</h2>
   <p class="card-sub">Sign in to manage your site.</p>
   <form id="login-form" onsubmit="return false;">
@@ -251,6 +251,8 @@ input:checked + .toggle-slider::before { transform: translateX(24px); }
     <button class="tab-button active" data-tab="blog-tab"><i class="fas fa-pen-nib"></i> Blog</button>
     <button class="tab-button" data-tab="lyrics-tab"><i class="fas fa-music"></i> Lyrics</button>
     <button class="tab-button" data-tab="nav-tab"><i class="fas fa-bars"></i> Navigation</button>
+    <button class="tab-button" data-tab="shows-tab"><i class="fas fa-ticket"></i> Shows</button>
+    <button class="tab-button" data-tab="press-tab"><i class="fas fa-newspaper"></i> Press</button>
     <button class="tab-button" data-tab="countdown-tab"><i class="fas fa-hourglass-half"></i> Countdown</button>
     <button class="tab-button warn" data-tab="maintenance-tab"><i class="fas fa-triangle-exclamation"></i> Maintenance</button>
   </div>
@@ -385,6 +387,108 @@ input:checked + .toggle-slider::before { transform: translateX(24px); }
           <span class="save-msg" id="save-msg">✓ Saved!</span>
         </div>
       </form>
+    </div>
+  </div>
+
+  <div id="shows-tab" class="tab-content">
+    <div class="card">
+      <h2 class="card-title"><i class="fas fa-ticket"></i> <span id="show-form-title">Add a show</span></h2>
+      <p class="card-sub">Shows appear on the Shows page and in the EPK's Live highlights. Future dates are listed as upcoming.</p>
+      <form id="show-form">
+        <input type="hidden" id="show-id" />
+        <div class="field">
+          <label for="show-title">Event name</label>
+          <input type="text" id="show-title" placeholder="e.g. BandLab Press Play Sydney" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="show-date">Date</label>
+            <input type="datetime-local" id="show-date" />
+          </div>
+          <div class="field">
+            <label for="show-date-text">Or date text (if unsure)</label>
+            <input type="text" id="show-date-text" placeholder="e.g. 2025" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="show-venue">Venue</label>
+            <input type="text" id="show-venue" placeholder="Venue name" />
+          </div>
+          <div class="field">
+            <label for="show-city">City</label>
+            <input type="text" id="show-city" placeholder="Sydney, NSW" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="show-role">Role</label>
+            <input type="text" id="show-role" placeholder="e.g. Pass the Aux performer, Headliner" />
+          </div>
+          <div class="field">
+            <label for="show-link">Tickets / info link</label>
+            <input type="text" id="show-link" placeholder="https://..." />
+          </div>
+        </div>
+        <div class="field">
+          <label for="show-image">Photo link (optional)</label>
+          <input type="text" id="show-image" placeholder="/assets/press/... or https://..." />
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn-primary" id="show-submit">Add Show</button>
+          <button type="button" class="btn-secondary" id="show-cancel" style="display:none;">Cancel Edit</button>
+        </div>
+      </form>
+    </div>
+    <div class="card">
+      <h2 class="card-title"><i class="fas fa-list"></i> Your shows</h2>
+      <div id="shows-list">Loading shows...</div>
+    </div>
+  </div>
+
+  <div id="press-tab" class="tab-content">
+    <div class="card">
+      <h2 class="card-title"><i class="fas fa-newspaper"></i> <span id="press-form-title">Add a feature</span></h2>
+      <p class="card-sub">Podcasts, interviews, blogs, playlists or radio that featured you. Shown on the home page and in the EPK.</p>
+      <form id="press-form">
+        <input type="hidden" id="press-id" />
+        <div class="field-row">
+          <div class="field">
+            <label for="press-outlet">Outlet / show name</label>
+            <input type="text" id="press-outlet" placeholder="e.g. Hornswoggled Podcast" required />
+          </div>
+          <div class="field">
+            <label for="press-kind">Type</label>
+            <input type="text" id="press-kind" placeholder="Podcast, Interview, Blog, Playlist, Radio" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="press-headline">Episode / article title</label>
+          <input type="text" id="press-headline" placeholder="Title of the episode or article" />
+        </div>
+        <div class="field">
+          <label for="press-quote">Quote (optional)</label>
+          <textarea id="press-quote" rows="3" placeholder="A short line they said about you"></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="press-link">Link</label>
+            <input type="text" id="press-link" placeholder="https://..." />
+          </div>
+          <div class="field">
+            <label for="press-date">Date</label>
+            <input type="datetime-local" id="press-date" />
+          </div>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn-primary" id="press-submit">Add Feature</button>
+          <button type="button" class="btn-secondary" id="press-cancel" style="display:none;">Cancel Edit</button>
+        </div>
+      </form>
+    </div>
+    <div class="card">
+      <h2 class="card-title"><i class="fas fa-list"></i> Your features</h2>
+      <div id="press-list">Loading features...</div>
     </div>
   </div>
 </div>
@@ -655,6 +759,96 @@ document.getElementById("maint-save-btn").addEventListener("click", async () => 
   } catch (err) { alert("Error saving maintenance settings: " + err.message); }
 });
 
+// ===== SHOWS & PRESS =====
+// Both are simple lists of records edited with a form; this wires one up.
+// Form field ids are "<prefix>-<field>"; stored keys are camelCase (date-text -> dateText).
+const toLocalInput = v => {
+  if (!v) return "";
+  const d = v.toDate ? v.toDate() : new Date(v);
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+};
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const keyOf = f => f.replace(/-([a-z])/g, (m, c) => c.toUpperCase());
+
+function recordEditor({ name, prefix, fields, dateField, label, noun }) {
+  const form = document.getElementById(`${prefix}-form`);
+  const idInput = document.getElementById(`${prefix}-id`);
+  const submit = document.getElementById(`${prefix}-submit`);
+  const cancel = document.getElementById(`${prefix}-cancel`);
+  const heading = document.getElementById(`${prefix}-form-title`);
+  const list = document.getElementById(`${name}-list`);
+  const el = f => document.getElementById(`${prefix}-${f}`);
+  let records = [];
+
+  const reset = () => {
+    form.reset();
+    idInput.value = "";
+    submit.textContent = `Add ${noun}`;
+    heading.textContent = `Add a ${noun.toLowerCase()}`;
+    cancel.style.display = "none";
+  };
+
+  const load = async () => {
+    try {
+      const snap = await getDocs(collection(db, name));
+      records = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      const t = r => (r[dateField] && r[dateField].toDate ? r[dateField].toDate().getTime() : 0);
+      records.sort((a, b) => t(b) - t(a));
+      list.innerHTML = records.length
+        ? records.map(r => `<div class="post-item"><span>${esc(label(r))}</span><div class="post-actions"><button class="btn-edit" data-edit="${r.id}">Edit</button><button class="btn-delete" data-delete="${r.id}">Delete</button></div></div>`).join("")
+        : `<p style="color:#a59fb0;">Nothing added yet.</p>`;
+    } catch (err) {
+      list.innerHTML = `<p style="color:#ff8a98;">Couldn't load (${esc(err.code || err.message)}). Check the Firestore rules include "${name}".</p>`;
+    }
+  };
+
+  list.addEventListener("click", async e => {
+    const editId = e.target.dataset.edit, delId = e.target.dataset.delete;
+    if (editId) {
+      const r = records.find(x => x.id === editId);
+      idInput.value = r.id;
+      fields.forEach(f => (el(f).value = f === dateField ? toLocalInput(r[f]) : r[keyOf(f)] || ""));
+      submit.textContent = "Save Changes";
+      heading.textContent = `Edit ${noun.toLowerCase()}`;
+      cancel.style.display = "inline-flex";
+      form.scrollIntoView({ behavior: "smooth" });
+    }
+    if (delId && confirm("Delete this permanently?")) {
+      await deleteDoc(doc(db, name, delId));
+      load();
+    }
+  });
+  cancel.addEventListener("click", reset);
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const data = {};
+    fields.forEach(f => {
+      const v = el(f).value.trim();
+      data[keyOf(f)] = f === dateField ? (v ? Timestamp.fromDate(new Date(v)) : null) : v;
+    });
+    data.updatedAt = serverTimestamp();
+    try {
+      if (idInput.value) await setDoc(doc(db, name, idInput.value), data);
+      else await addDoc(collection(db, name), data);
+      reset();
+      load();
+    } catch (err) { alert("Error saving: " + err.message); }
+  });
+  reset();
+  return load;
+}
+
+const loadShows = recordEditor({
+  name: "shows", prefix: "show", dateField: "date", noun: "Show",
+  fields: ["title", "date", "date-text", "venue", "city", "role", "link", "image"],
+  label: r => `${r.title}${r.city ? " · " + r.city : ""}`,
+});
+const loadPress = recordEditor({
+  name: "press", prefix: "press", dateField: "date", noun: "Feature",
+  fields: ["outlet", "kind", "headline", "quote", "link", "date"],
+  label: r => `${r.outlet}${r.headline ? ": " + r.headline : ""}`,
+});
+
 // ===== TAB SWITCHING =====
 document.querySelectorAll('.tab-button').forEach(btn => btn.addEventListener('click', () => {
   document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
@@ -684,6 +878,8 @@ onAuthStateChanged(auth, user => {
     loadNavMenu();
     loadCountdown();
     loadMaintenance();
+    loadShows();
+    loadPress();
   } else {
     document.getElementById("login-container").style.display = "block";
     document.getElementById("admin-content").style.display = "none";

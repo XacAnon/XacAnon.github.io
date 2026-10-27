@@ -13,7 +13,7 @@ if (/\.html$/.test(location.pathname)) {
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#09080d">
 
-<link rel="icon" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" type="image/jpeg" />
+<link rel="icon" href="/assets/img/xac-anon.jpg" type="image/jpeg" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
@@ -21,14 +21,14 @@ if (/\.html$/.test(location.pathname)) {
 
 <meta property="og:title" content="Xac Anon – Official Site" />
 <meta property="og:description" content="Discover Xac Anon's music, latest releases, press kit and more." />
-<meta property="og:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta property="og:image" content="https://www.xacanonmusic.com/assets/img/xac-anon.jpg" />
 <meta property="og:url" content="https://www.xacanonmusic.com/" />
 <link rel="canonical" href="https://www.xacanonmusic.com/" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Xac Anon – Official Site" />
 <meta name="twitter:description" content="Discover Xac Anon's music, latest releases, press kit and more." />
-<meta name="twitter:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta name="twitter:image" content="https://www.xacanonmusic.com/assets/img/xac-anon.jpg" />
 <meta name="description" content="Discover Xac Anon's music, latest releases, and press kit. Dive into lo-fi and emo rap that speaks from the heart." />
 
 <script type="application/ld+json">
@@ -40,9 +40,9 @@ if (/\.html$/.test(location.pathname)) {
   "sameAs": [
     "https://instagram.com/xacanon/",
     "https://x.com/xacanonau",
-    "https://youtube.com/@XacAnon"
+    "https://youtube.com/@XacAnonRS"
   ],
-  "image": "https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg",
+  "image": "https://www.xacanonmusic.com/assets/img/xac-anon.jpg",
   "description": "Discover Xac Anon's music, latest releases, and press kit. Lo-fi and emo rap that speaks from the heart.",
   "genre": ["Lo-fi Rap", "Emo Rap"]
 }
@@ -174,27 +174,27 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/theme.css?v=613745b6" />
+<link rel="stylesheet" href="assets/theme.css?v=ee651844" />
 <script src="/assets/release.js?v=6b6523d8" defer></script>
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
 <div id="maintenance-overlay">
-  <img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon" class="maint-logo" />
+  <img src="/assets/img/xac-anon.jpg" alt="Xac Anon" class="maint-logo" />
   <h1 class="maint-title">Back Soon</h1>
   <p class="maint-sub">The site is currently undergoing maintenance.</p>
   <div class="maint-message" id="maint-message-text">We'll be back soon. Thanks for your patience!</div>
   <div class="maint-socials">
     <a href="https://instagram.com/xacanon/" target="_blank"><i class="fab fa-instagram"></i></a>
     <a href="https://x.com/xacanonau" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://youtube.com/@XacAnon" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://youtube.com/@XacAnonRS" target="_blank"><i class="fab fa-youtube"></i></a>
   </div>
 </div>
 
 <nav class="navbar">
   <div class="navbar-container">
-    <a href="/" class="nav-logo"><img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon Logo"></a>
+    <a href="/" class="nav-logo"><img src="/assets/img/xac-anon.jpg" alt="Xac Anon Logo"></a>
     <div class="nav-right" id="global-nav-point">
       <a href="/" class="home-button" data-text="Home">Home</a>
       <div class="hamburger"><i class="fas fa-bars"></i></div>
@@ -213,7 +213,7 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 <section class="hero">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <img class="hero-avatar" src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon" />
+    <img class="hero-avatar" src="/assets/img/xac-anon.jpg" alt="Xac Anon" />
     <p class="hero-eyebrow">Lo-fi &middot; Emo rap &middot; Newcastle, NSW</p>
     <h1 class="hero-title">Xac Anon</h1>
     <p class="hero-tagline">Welcome to the sound of the future.</p>
@@ -229,10 +229,19 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
         <p id="countdown"></p>
         <p class="release-line" id="release-line"></p>
         <a class="btn release-btn" id="release-btn" target="_blank" rel="noopener" hidden></a>
+        <a class="release-more" id="release-more" hidden>About this song <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
   <a class="hero-scroll" href="#popular" aria-label="Scroll to music"><i class="fas fa-chevron-down"></i></a>
+</section>
+
+<section class="press-strip reveal" id="press-strip" hidden>
+  <div class="section-head">
+    <div><p class="eyebrow">Press &amp; features</p><h2>As Featured On</h2></div>
+    <a class="section-link" href="/epk">Press kit <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="press-list" id="press-list"></div>
 </section>
 
 <section class="music-section reveal" id="popular">
@@ -303,7 +312,7 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
     <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
     <a href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
-    <a href="https://youtube.com/@XacAnon" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://youtube.com/@XacAnonRS" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     <a href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
     <a href="https://www.tiktok.com/@xacanon" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
     <a href="https://x.com/xacanonau" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -327,7 +336,7 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -490,6 +499,11 @@ async function loadCountdown() {
   if (r.title) { releaseTitle.textContent = r.title; releaseTitle.hidden = false; }
   if (r.artwork) { releaseArt.src = r.artwork; releaseArt.alt = r.title || ''; releaseArt.hidden = false; }
   if (r.mode === 'upcoming') startCountdown(r); else showOutNow(r);
+  if (r.slug && r.mode === 'latest') {
+    const more = document.getElementById('release-more');
+    more.href = '/releases/' + r.slug;
+    more.hidden = false;
+  }
   const ticker = document.getElementById('ticker');
   const name = r.title ? `"${r.title}"` : 'New single';
   if (ticker) ticker.textContent = r.mode === 'upcoming'
@@ -499,6 +513,32 @@ async function loadCountdown() {
 }
 
 loadCountdown();
+
+// ===== PRESS & FEATURES (admin panel → Press tab) =====
+const pressEsc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+async function loadPress(listId, wrapId, limit) {
+  try {
+    const snap = await getDocs(collection(db, "press"));
+    const items = snap.docs.map(d => d.data())
+      .sort((a, b) => (b.date?.toMillis?.() || 0) - (a.date?.toMillis?.() || 0))
+      .slice(0, limit || 99);
+    if (!items.length) return;
+    document.getElementById(listId).innerHTML = items.map(p => {
+      const tag = p.link ? "a" : "div";
+      const href = p.link ? ` href="${pressEsc(p.link)}" target="_blank" rel="noopener"` : "";
+      const when = p.date?.toDate ? p.date.toDate().toLocaleDateString(undefined, { month: "long", year: "numeric" }) : "";
+      return `<${tag} class="press-item"${href}>
+        ${p.kind ? `<span class="press-kind">${pressEsc(p.kind)}</span>` : ""}
+        <span class="press-outlet">${pressEsc(p.outlet)}</span>
+        ${p.headline ? `<span class="press-title">${pressEsc(p.headline)}</span>` : ""}
+        ${p.quote ? `<p class="press-quote">&ldquo;${pressEsc(p.quote)}&rdquo;</p>` : ""}
+        ${when ? `<span class="press-date">${when}</span>` : ""}
+      </${tag}>`;
+    }).join("");
+    document.getElementById(wrapId).hidden = false;
+  } catch (err) { console.warn("Press:", err); }
+}
+loadPress("press-list", "press-strip", 3);
 </script>
 
 </body>

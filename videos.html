@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos | Xac Anon</title>
+<meta name="description" content="Watch Xac Anon&#x27;s music videos, visualisers and other content from YouTube." />
+<link rel="canonical" href="https://www.xacanonmusic.com/videos" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Xac Anon" />
+<meta property="og:title" content="Videos | Xac Anon" />
+<meta property="og:description" content="Watch Xac Anon&#x27;s music videos, visualisers and other content from YouTube." />
+<meta property="og:url" content="https://www.xacanonmusic.com/videos" />
+<meta property="og:image" content="https://www.xacanonmusic.com/assets/img/xac-anon.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Videos | Xac Anon" />
+<meta name="twitter:description" content="Watch Xac Anon&#x27;s music videos, visualisers and other content from YouTube." />
+<meta name="twitter:image" content="https://www.xacanonmusic.com/assets/img/xac-anon.jpg" />
+<link rel="icon" type="image/jpeg" href="/assets/img/xac-anon.jpg" />
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#09080d">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/theme.css?v=ee651844" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <a href="/" class="nav-logo"><img src="/assets/img/xac-anon.jpg" alt="Xac Anon Logo"></a>
+    <div class="nav-right">
+      <a href="/" class="home-button">Home</a>
+      <div class="hamburger"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links">
+        <li><a href="/music">Music</a></li>
+        <li><a href="/videos">Videos</a></li>
+        <li><a href="/shows">Shows</a></li>
+        <li><a href="/lyrics">Lyrics</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="https://shop.xacanonmusic.com" target="_blank" rel="noopener">Shop</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <p class="eyebrow">YouTube</p>
+  <h1>Videos</h1>
+  <p>Music videos, visualisers, announcements and more from the channel.</p>
+  <a class="btn" href="https://youtube.com/@XacAnonRS?sub_confirmation=1" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Subscribe</a>
+</header>
+
+<main class="page-main page-main--wide">
+  <div class="video-grid" id="video-grid"><p class="empty-note">Loading...</p></div>
+</main>
+
+<div id="yt-modal" class="modal">
+  <div class="modal-content yt-modal-content">
+    <span class="modal-close yt-close"><i class="fas fa-times"></i> Close Player</span>
+    <div class="yt-frame"><iframe id="yt-player" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="socials">
+    <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+    <a href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+    <a href="https://youtube.com/@XacAnonRS" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://www.tiktok.com/@xacanon" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/xacanonau" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://discord.gg/u6ARJDzu5X" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Xac Anon &middot; Newcastle, NSW &middot; <a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></p>
+  <p class="footer-credit">Website by Xachariah Anonymous</p>
+</footer>
+
+<script type="module" src="/assets/site.js"></script>
+<script type="module">
+import { escapeHtml } from "/assets/site.js";
+const grid = document.getElementById("video-grid");
+const modal = document.getElementById("yt-modal");
+const player = document.getElementById("yt-player");
+const close = () => { modal.style.display = "none"; player.src = ""; };
+
+try {
+  const videos = await fetch("/data/videos.json", { cache: "no-cache" }).then(r => r.json());
+  grid.innerHTML = videos.map(v => `
+    <a class="video-card" href="https://www.youtube.com/watch?v=${escapeHtml(v.id)}" data-yt="${escapeHtml(v.id)}" target="_blank" rel="noopener">
+      <span class="video-thumb"><img src="https://i.ytimg.com/vi/${escapeHtml(v.id)}/hqdefault.jpg" alt="" loading="lazy"></span>
+      <h3>${escapeHtml(v.title)}</h3>
+      ${v.published ? `<span class="video-date">${new Date(v.published).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" })}</span>` : ""}
+    </a>`).join("");
+  grid.querySelectorAll("[data-yt]").forEach(card => card.addEventListener("click", e => {
+    e.preventDefault();
+    player.src = `https://www.youtube-nocookie.com/embed/${card.dataset.yt}?autoplay=1&rel=0`;
+    modal.style.display = "flex";
+  }));
+} catch (err) {
+  console.warn("Videos:", err);
+  grid.innerHTML = `<p class="empty-note">Couldn't load videos. Watch on <a href="https://youtube.com/@XacAnonRS" target="_blank" rel="noopener">YouTube</a>.</p>`;
+}
+modal.querySelector(".yt-close").addEventListener("click", close);
+modal.addEventListener("click", e => { if (e.target === modal) close(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && modal.style.display === "flex") close(); });
+</script>
+</body>
+</html>
