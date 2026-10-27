@@ -10,11 +10,23 @@ if (/\.html$/.test(location.pathname)) {
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xac Anon | EPK</title>
-<link rel="icon" type="image/png" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta name="description" content="Electronic press kit for Xac Anon: bio, quick facts, selected tracks, press photos and contact details." />
+<link rel="canonical" href="https://www.xacanonmusic.com/epk" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Xac Anon" />
+<meta property="og:title" content="Xac Anon | EPK" />
+<meta property="og:description" content="Electronic press kit for Xac Anon: bio, quick facts, selected tracks, press photos and contact details." />
+<meta property="og:url" content="https://www.xacanonmusic.com/epk" />
+<meta property="og:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Xac Anon | EPK" />
+<meta name="twitter:description" content="Electronic press kit for Xac Anon: bio, quick facts, selected tracks, press photos and contact details." />
+<meta name="twitter:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<link rel="icon" type="image/jpeg" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Friz+Quadrata&family=Medici&display=swap" rel="stylesheet" />
   <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff4f81">
+<meta name="theme-color" content="#09080d">
 
 
 <style>
@@ -107,66 +119,112 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
         <li><a href="/contact">Contact</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="https://shop.xacanonmusic.com" target="_blank" rel="noopener" data-text="Shop">Shop</a></li>
-        <li><a href="/construction" target="_blank" data-text="Members">Members</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<header>
-  <h1 data-text="Xac Anon">Xac Anon</h1>
-  <p>Electronic Press Kit</p>
+<header class="epk-hero">
+  <img class="epk-avatar" src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon" />
+  <div class="epk-hero-text">
+    <p class="eyebrow">Electronic Press Kit</p>
+    <h1>Xac Anon</h1>
+    <p class="epk-tagline">Lo-fi and emo rap from Newcastle, NSW, Australia.</p>
+    <div class="epk-actions no-print">
+      <button class="btn" type="button" onclick="window.print()"><i class="fas fa-file-arrow-down"></i> Download one-sheet (PDF)</button>
+      <a class="btn btn-ghost" href="mailto:business@xacanonmusic.com"><i class="fas fa-envelope"></i> Bookings &amp; press</a>
+    </div>
+  </div>
 </header>
+
+<section class="epk-facts" aria-label="Quick facts">
+  <div class="fact"><span class="fact-label">Genre</span><span class="fact-value">Lo-fi / Emo rap</span></div>
+  <div class="fact"><span class="fact-label">Based in</span><span class="fact-value">Newcastle, NSW, Australia</span></div>
+  <div class="fact"><span class="fact-label">Releasing since</span><span class="fact-value">2023</span></div>
+  <div class="fact"><span class="fact-label">Catalogue</span><span class="fact-value">16 releases, incl. the album <em>Purgatory</em></span></div>
+  <div class="fact"><span class="fact-label">Latest release</span><span class="fact-value" id="epk-latest">Hotel (2026)</span></div>
+  <div class="fact"><span class="fact-label">Contact</span><span class="fact-value"><a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></span></div>
+</section>
 
 <section class="bio">
   <h2>Biography</h2>
-  <p>Xac Anon is a lo-fi emo rapper from Australia whose music blends raw emotion with haunting production. His work, including <em>Purgatory</em>, <em>Second Chance</em>, and <em>Darkness and Light</em>, carries the echo of pain and transcendence.</p>
+  <p class="epk-short-bio"><strong>Short bio:</strong> Xac Anon is a lo-fi emo rapper from Newcastle, Australia, making dark, honest music about grief, heartbreak and survival.</p>
+  <p>Xac Anon is a lo-fi emo rapper from Newcastle, NSW, whose music blends raw emotion with haunting production. His songs sit in the quiet hours of the night: slow, dark and honest, turning grief, guilt and heartbreak into something listeners can hold onto.</p>
+  <p>His work, including the album <em>Purgatory</em> (2025) and the <em>Darkness &amp; Light</em> EP, carries the echo of pain and transcendence. Since 2023 he has released a steady run of singles, from <em>June Storms</em> to <em>Olympus</em>, <em>Hell, Pt. 3</em> and <em>Hotel</em>, working with artists including Dayze, Incognetoed, GCade and Jack Anon.</p>
 </section>
 
 <section class="music-section">
-  <h2>Discography</h2>
+  <div class="section-head"><div><p class="eyebrow">Listen</p><h2>Selected Tracks</h2></div></div>
   <div class="music-grid" id="musicGrid"></div>
+  <div class="epk-platforms no-print">
+    <a class="btn btn-ghost" href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener"><i class="fab fa-spotify"></i> Spotify</a>
+    <a class="btn btn-ghost" href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener"><i class="fab fa-apple"></i> Apple Music</a>
+    <a class="btn btn-ghost" href="https://youtube.com/@XacAnon" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube</a>
+    <a class="btn btn-ghost" href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener"><i class="fab fa-soundcloud"></i> SoundCloud</a>
+  </div>
 </section>
 
 <section class="highlights">
-  <h2>Achievements</h2>
-  <h3 style="color:#ff4c4c;">Musical Milestones</h3>
+  <h2>Highlights</h2>
+  <h3>Sound</h3>
   <ul>
-    <li>Released critically noted projects: <em>Purgatory</em>, <em>Second Chance</em>, and <em>Darkness and Light</em>.</li>
-    <li>Developed a signature <strong>lo-fi emo rap</strong> style, blending dark, introspective lyrics with haunting melodies.</li>
+    <li>A signature <strong>lo-fi emo rap</strong> style: dark, introspective lyrics over slow, haunting production.</li>
+    <li>Songs written about grief, guilt, heartbreak and mental health, without softening them.</li>
   </ul>
-  <h3 style="color:#ff4c4c;">Artistic Influence</h3>
+  <h3>Catalogue</h3>
   <ul>
-    <li>Shaped the Australian lo-fi rap scene with emotionally raw storytelling.</li>
-    <li>Inspired fans and fellow artists to explore vulnerability, grief, and mental health through music.</li>
+    <li>Debut album <em>Purgatory</em> (2025), featuring Dayze.</li>
+    <li><em>Darkness &amp; Light</em> EP and the <em>15</em> project, released exclusively on YouTube.</li>
+    <li>Consistent singles from 2023 to 2026, most recently <em>Hotel</em> and <em>Hell, Pt. 3</em>.</li>
   </ul>
-  <h3 style="color:#ff4c4c;">Fan Impact & Community</h3>
+  <h3>Collaborations</h3>
   <ul>
-    <li>Cultivated a devoted online following across streaming platforms and Discord.</li>
-    <li>Songs and lyrics are celebrated as sources of comfort, reflection, and connection.</li>
-    <li>Work continues to inspire fan tributes, edits, and creative interpretations.</li>
+    <li>Tracks with Dayze, Incognetoed, GCade and Jack Anon.</li>
+    <li>Featured on CronusTheRapper's <em>I'm On My Way</em>.</li>
   </ul>
-  <h3 style="color:#ff4c4c;">Legacy</h3>
+  <h3>Community</h3>
   <ul>
-    <li>Renowned for authenticity and emotional honesty, never shying from confronting pain in art.</li>
-    <li>Left a lasting imprint on music and culture, offering catharsis and resonance for listeners navigating struggle.</li>
+    <li>A growing following across Spotify, Apple Music, YouTube and TikTok.</li>
+    <li>Fans gather in the Xac Anon Public Server on Discord, where songs and lyrics are shared as a source of comfort and connection.</li>
   </ul>
+</section>
+
+<section class="epk-assets">
+  <h2>Press Photos &amp; Artwork</h2>
+  <p class="card-sub">Free to use for press and promotion. Open full size, then save.</p>
+  <div class="asset-grid">
+    <a class="asset" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" target="_blank" rel="noopener">
+      <img src="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" alt="Xac Anon profile photo" />
+      <span>Profile photo <small>JPG &middot; 640 &times; 640</small></span>
+    </a>
+    <a class="asset asset--transparent" href="https://i.ibb.co/S4qv09pw/de2ed9d3-4a8a-479c-9fff-08d155871fa2-removalai-preview.png" target="_blank" rel="noopener">
+      <img src="https://i.ibb.co/S4qv09pw/de2ed9d3-4a8a-479c-9fff-08d155871fa2-removalai-preview.png" alt="Xac Anon character artwork" />
+      <span>Character artwork <small>PNG &middot; transparent</small></span>
+    </a>
+  </div>
 </section>
 
 <section class="contact-section">
-  <h2>Press & Contact</h2>
-  <p>Business: <a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></p>
-  <p>Instagram: <a href="https://instagram.com/xacanon" target="_blank">@xacanon</a></p>
-  <p>Spotify: <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx?si=Vi0WR7P1QYyCrR5q_0DJLA" target="_blank">Listen Here</a></p>
+  <h2>Press &amp; Contact</h2>
+  <p>Business &amp; bookings: <a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></p>
+  <p>Instagram: <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener">@xacanon</a> &middot; TikTok: <a href="https://www.tiktok.com/@xacanon" target="_blank" rel="noopener">@xacanon</a> &middot; X: <a href="https://x.com/xacanonau" target="_blank" rel="noopener">@xacanonau</a></p>
+  <p>Discord: <a href="https://discord.gg/u6ARJDzu5X" target="_blank" rel="noopener">Xac Anon Public Server</a></p>
+  <p>Website: <a href="https://www.xacanonmusic.com">xacanonmusic.com</a></p>
 </section>
 
-<footer>
-  <div class="footer-scroll">© 2026 Xac Anon | Website by Xachariah Anonymous</div>
-  <div class="socials-footer">
-    <a href="https://instagram.com/xacanon/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://x.com/xacanonau" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-    <a href="https://youtube.com/@XacAnon" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+<footer class="site-footer">
+  <div class="socials">
+    <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+    <a href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+    <a href="https://youtube.com/@XacAnon" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://www.tiktok.com/@xacanon" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/xacanonau" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://discord.gg/u6ARJDzu5X" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
   </div>
+  <p class="footer-copy">&copy; 2026 Xac Anon &middot; Newcastle, NSW &middot; <a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></p>
+  <p class="footer-credit">Website by Xachariah Anonymous</p>
 </footer>
 
 <div id="trackModal" class="modal">
@@ -185,9 +243,10 @@ if (_hbEpk && _nlEpk && !_hbEpk._bound) {
 
 // Spotify Tracks
 const tracks = [
+  "https://open.spotify.com/track/6DH6znAEyBTC55edhrz1UZ",
+  "https://open.spotify.com/track/1EiyqRoPIRxYJrJ3c3eclH",
   "https://open.spotify.com/track/4K0sC4yvqVhWAXZxSmQdOz",
-  "https://open.spotify.com/track/0sF1xBC8jlt88Ah8AuLpY5",
-  "https://open.spotify.com/track/6Dk1WBTgXAcCtY9lGwMIw5"
+  "https://open.spotify.com/track/0sF1xBC8jlt88Ah8AuLpY5"
 ];
 const grid = document.getElementById("musicGrid");
 tracks.forEach(url => {
@@ -201,6 +260,12 @@ tracks.forEach(url => {
       grid.appendChild(card);
     }).catch(()=>{ console.log("Failed to load track"); });
 });
+
+// Latest release fact follows the same data as the home page
+fetch('/data/latest-release.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(d => {
+  const rel = d && (d.upcoming && new Date(d.upcoming.releaseDate) <= new Date() ? d.upcoming : d.latest);
+  if (rel) document.getElementById('epk-latest').textContent = `${rel.title} (${new Date(rel.releaseDate).getFullYear()})`;
+}).catch(() => {});
 
 function openModal(trackId){
   document.getElementById("trackModal").style.display="flex";
@@ -217,12 +282,12 @@ function closeModal(){
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 const _fbConfig = {
-  apiKey: "AIzaSyCHWMstWD8QwoT_kz2lBW8ZNXNlXerl-9c",
-  authDomain: "xacanonblog.firebaseapp.com",
-  projectId: "xacanonblog",
-  storageBucket: "xacanonblog.firebasestorage.app",
-  messagingSenderId: "319182532803",
-  appId: "1:319182532803:web:3a4d33372643dd71d5f276",
+  apiKey: "AIzaSyD5ErOWtxBdfL3Z0o_TwYnii1GflZ0fYdc",
+  authDomain: "xacanonwebsite.firebaseapp.com",
+  projectId: "xacanonwebsite",
+  storageBucket: "xacanonwebsite.firebasestorage.app",
+  messagingSenderId: "725682557903",
+  appId: "1:725682557903:web:f699e7cb0504a8d75478ba",
 };
 const _app = getApps().length ? getApps()[0] : initializeApp(_fbConfig);
 const _db = getFirestore(_app);

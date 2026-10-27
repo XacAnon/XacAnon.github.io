@@ -11,9 +11,9 @@ if (/\.html$/.test(location.pathname)) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xac Anon</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff4f81">
+<meta name="theme-color" content="#09080d">
 
-<link rel="icon" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" type="image/png" />
+<link rel="icon" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" type="image/jpeg" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
@@ -22,7 +22,8 @@ if (/\.html$/.test(location.pathname)) {
 <meta property="og:title" content="Xac Anon – Official Site" />
 <meta property="og:description" content="Discover Xac Anon's music, latest releases, press kit and more." />
 <meta property="og:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
-<meta property="og:url" content="https://xacanonmusic.com" />
+<meta property="og:url" content="https://www.xacanonmusic.com/" />
+<link rel="canonical" href="https://www.xacanonmusic.com/" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Xac Anon – Official Site" />
@@ -174,6 +175,7 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/theme.css" />
+<script src="/assets/release.js" defer></script>
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -219,10 +221,15 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
       <a class="btn" href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener"><i class="fab fa-spotify"></i> Listen on Spotify</a>
       <a class="btn btn-ghost" href="/music"><i class="fas fa-compact-disc"></i> All music</a>
     </div>
-    <div class="countdown-container">
-      <h2>Next Release Countdown</h2>
-      <p id="countdown">Loading...</p>
-      <p class="release-line">Release Date: <span id="release-date"></span></p>
+    <div class="countdown-container" hidden>
+      <img class="release-art" id="release-art" alt="" hidden />
+      <div class="release-info">
+        <h2>Next Release</h2>
+        <p class="release-title" id="release-title" hidden></p>
+        <p id="countdown"></p>
+        <p class="release-line" id="release-line"></p>
+        <a class="btn release-btn" id="release-btn" target="_blank" rel="noopener" hidden></a>
+      </div>
     </div>
   </div>
   <a class="hero-scroll" href="#popular" aria-label="Scroll to music"><i class="fas fa-chevron-down"></i></a>
@@ -263,6 +270,12 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 </section>
 
 <section class="cta-band reveal">
+  <div class="cta-card cta-card--shop">
+    <i class="fas fa-shirt cta-icon"></i>
+    <h2>Official Merch</h2>
+    <p>Clothing and limited drops, straight from the Xac Anon shop.</p>
+    <a class="btn" href="https://shop.xacanonmusic.com" target="_blank" rel="noopener">Shop now <i class="fas fa-arrow-right"></i></a>
+  </div>
   <div class="cta-card">
     <i class="fas fa-newspaper cta-icon"></i>
     <h2>Check Out My EPK</h2>
@@ -284,15 +297,20 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 </div>
 </div>
 
-<footer>
-<div class="ticker">Breaking News: New single dropping soon. Stay tuned!</div>
-<div class="socials">
-<a href="https://instagram.com/xacanon/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-<a href="https://x.com/xacanonau" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-<a href="https://youtube.com/@XacAnon" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-<a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
-</div>
-<p class="footer-copy">&copy; 2026 Xac Anon. All Rights Reserved.</p>
+<footer class="site-footer">
+  <div class="ticker" id="ticker">New music from Xac Anon. Stream it everywhere.</div>
+  <div class="socials">
+    <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+    <a href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+    <a href="https://youtube.com/@XacAnon" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://www.tiktok.com/@xacanon" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/xacanonau" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://discord.gg/u6ARJDzu5X" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Xac Anon &middot; Newcastle, NSW &middot; <a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></p>
+  <p class="footer-credit">Website by Xachariah Anonymous</p>
 </footer>
 
 <script>
@@ -313,12 +331,12 @@ import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCHWMstWD8QwoT_kz2lBW8ZNXNlXerl-9c",
-  authDomain: "xacanonblog.firebaseapp.com",
-  projectId: "xacanonblog",
-  storageBucket: "xacanonblog.firebasestorage.app",
-  messagingSenderId: "319182532803",
-  appId: "1:319182532803:web:3a4d33372643dd71d5f276",
+  apiKey: "AIzaSyD5ErOWtxBdfL3Z0o_TwYnii1GflZ0fYdc",
+  authDomain: "xacanonwebsite.firebaseapp.com",
+  projectId: "xacanonwebsite",
+  storageBucket: "xacanonwebsite.firebasestorage.app",
+  messagingSenderId: "725682557903",
+  appId: "1:725682557903:web:f699e7cb0504a8d75478ba",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -399,29 +417,51 @@ cards.forEach(card => {
 modalClose.addEventListener('click', () => { modal.style.display = 'none'; player.src = ''; });
 window.addEventListener('click', (e) => { if (e.target == modal) { modal.style.display = 'none'; player.src = ''; } });
 
-// ===== COUNTDOWN (loaded from Firebase) =====
-const countdownEl = document.getElementById('countdown');
-const releaseDateEl = document.getElementById('release-date');
+// ===== RELEASE COUNTDOWN =====
+// Shows the next release (counting down, with a presave link) or, once it's
+// out, the latest release. Fills in automatically from /data/latest-release.json;
+// a future date set in the admin Countdown tab overrides it.
 const countdownContainer = document.querySelector('.countdown-container');
+const countdownEl = document.getElementById('countdown');
+const releaseLine = document.getElementById('release-line');
+const releaseTitle = document.getElementById('release-title');
+const releaseBtn = document.getElementById('release-btn');
+const releaseArt = document.getElementById('release-art');
+const fmtDate = d => d.toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' });
+
+function setButton(link, label, icon) {
+  if (!link) { releaseBtn.hidden = true; return; }
+  releaseBtn.href = link;
+  releaseBtn.innerHTML = `<i class="fas ${icon}"></i> ${label}`;
+  releaseBtn.hidden = false;
+}
+
+function showOutNow(r) {
+  countdownContainer.querySelector('h2').textContent = 'Latest Release';
+  const days = (Date.now() - r.date) / 864e5;
+  countdownEl.textContent = 'Out Now!';
+  countdownEl.classList.add('expired');
+  countdownEl.hidden = days > 30;
+  releaseLine.textContent = `Released ${fmtDate(r.date)}`;
+  setButton(r.link, 'Listen now', 'fa-headphones');
+}
 
 let countdownInterval = null;
-
-function startCountdown(releaseDateMs, label) {
-  const heading = countdownContainer.querySelector('h2');
-  if (heading && label) heading.textContent = label;
-  releaseDateEl.textContent = new Date(releaseDateMs).toDateString();
+function startCountdown(r) {
+  countdownContainer.querySelector('h2').textContent = r.heading;
+  releaseLine.textContent = `Release Date: ${fmtDate(r.date)}`;
+  setButton(r.link, 'Presave', 'fa-bookmark');
   const tick = () => {
-    const distance = releaseDateMs - new Date().getTime();
+    const distance = r.date - Date.now();
     if (distance <= 0) {
       clearInterval(countdownInterval);
-      countdownEl.textContent = "Out Now!";
-      countdownEl.classList.add('expired');
+      showOutNow(r);
       return;
     }
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / 864e5);
+    const hours = Math.floor((distance % 864e5) / 36e5);
+    const minutes = Math.floor((distance % 36e5) / 6e4);
+    const seconds = Math.floor((distance % 6e4) / 1000);
     countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   };
   tick();
@@ -429,32 +469,33 @@ function startCountdown(releaseDateMs, label) {
 }
 
 async function loadCountdown() {
+  let override = null;
   try {
     const snap = await getDoc(doc(db, "siteSettings", "countdown"));
     if (snap.exists()) {
       const data = snap.data();
-      if (data.visible === false) {
-        countdownContainer.style.display = "none";
-        return;
-      }
-      if (data.outNow) {
-        const heading = countdownContainer.querySelector('h2');
-        if (heading && data.label) heading.textContent = data.label;
-        releaseDateEl.parentElement.style.display = "none";
-        countdownEl.textContent = "Out Now!";
-        countdownEl.classList.add('expired');
-        return;
-      }
+      if (data.visible === false) return;
       if (data.releaseDate) {
-        const releaseDate = data.releaseDate.toDate ? data.releaseDate.toDate() : new Date(data.releaseDate);
-        startCountdown(releaseDate.getTime(), data.label);
-        return;
+        override = {
+          label: data.label,
+          releaseDate: data.releaseDate.toDate ? data.releaseDate.toDate() : new Date(data.releaseDate),
+          presaveUrl: data.presaveUrl,
+        };
       }
     }
-    countdownContainer.style.display = "none";
-  } catch (err) {
-    countdownContainer.style.display = "none";
-  }
+  } catch (err) { console.warn("Countdown settings unavailable:", err); }
+
+  const r = await window.XacRelease.resolve(override);
+  if (!r) return;
+  if (r.title) { releaseTitle.textContent = r.title; releaseTitle.hidden = false; }
+  if (r.artwork) { releaseArt.src = r.artwork; releaseArt.alt = r.title || ''; releaseArt.hidden = false; }
+  if (r.mode === 'upcoming') startCountdown(r); else showOutNow(r);
+  const ticker = document.getElementById('ticker');
+  const name = r.title ? `"${r.title}"` : 'New single';
+  if (ticker) ticker.textContent = r.mode === 'upcoming'
+    ? `${name} drops ${fmtDate(r.date)}. Presave it now!`
+    : `Out now: ${name}. Stream it everywhere.`;
+  countdownContainer.hidden = false;
 }
 
 loadCountdown();

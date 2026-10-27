@@ -729,10 +729,13 @@ footer .socials-footer a:hover { background: var(--accent); border-color: var(--
   box-sizing: border-box;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 1.25rem;
 }
 .cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: clamp(1.75rem, 4vw, 2.5rem);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -747,7 +750,7 @@ footer .socials-footer a:hover { background: var(--accent); border-color: var(--
 }
 .cta-icon { font-size: 1.4rem; color: var(--accent); margin-bottom: 1rem; }
 .cta-card h2 { margin: 0 0 0.5rem; font-size: 1.5rem; font-weight: 800; }
-.cta-card p { margin: 0 0 1.5rem; color: var(--muted); }
+.cta-card p { margin: 0 0 1.5rem; color: var(--muted); flex: 1; }
 
 .footer-copy { margin: 1.25rem 0 0 !important; font-size: 0.8rem; color: #6f6979; }
 
@@ -846,3 +849,166 @@ footer .socials-footer a:hover { background: var(--accent); border-color: var(--
   .yt-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
   .yt-card h3 { font-size: 0.85rem !important; }
 }
+
+/* Always respect the hidden attribute, even on elements styled with display */
+[hidden] { display: none !important; }
+
+/* Home release card (countdown / latest release) */
+.hero .countdown-container:not([hidden]) {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: left;
+  padding: 1rem 1.25rem;
+}
+.release-art {
+  width: 104px;
+  height: 104px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.8);
+}
+.release-info { min-width: 0; }
+.release-title {
+  margin: 0 0 0.15rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+}
+.hero .countdown-container #countdown { font-size: clamp(1.2rem, 3.5vw, 1.6rem); }
+.release-btn { margin-top: 0.75rem; padding: 0.6rem 1.15rem !important; font-size: 0.88rem !important; }
+@media (max-width: 480px) {
+  .hero .countdown-container:not([hidden]) { flex-direction: column; text-align: center; }
+}
+
+/* Shared footer */
+footer .socials { flex-wrap: wrap; }
+.footer-copy a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.footer-copy a:hover { color: var(--text); }
+.footer-credit { margin: 0.35rem 0 0 !important; font-size: 0.75rem; color: #5d5866; }
+
+/* =========================================================
+   EPK
+   ========================================================= */
+.epk-hero {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  width: calc(100% - 32px);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5rem) 0 2rem !important;
+  text-align: left !important;
+}
+.epk-avatar {
+  width: clamp(140px, 22vw, 210px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 24px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--line-strong), 0 30px 60px -25px rgba(255, 79, 129, 0.55);
+}
+.epk-hero h1 { margin: 0 0 0.5rem !important; text-align: left; }
+.epk-tagline { font-size: 1.1rem !important; color: #d4cedc !important; margin: 0 0 1.5rem !important; }
+.epk-actions, .epk-platforms { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.epk-platforms { margin-top: 0.5rem; }
+.epk-facts {
+  width: calc(100% - 32px);
+  max-width: 1000px;
+  margin: 0 auto 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 0.75rem;
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.15rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.fact-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.fact-value { font-weight: 600; color: var(--text); }
+.fact-value a { color: var(--accent); text-decoration: none; word-break: break-word; }
+.epk-short-bio {
+  padding: 0.9rem 1.1rem;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+}
+.epk-assets {
+  width: calc(100% - 32px);
+  max-width: 820px;
+  margin: 2rem auto !important;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.epk-assets h2 { margin: 0 0 0.35rem; font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; }
+.epk-assets .card-sub { color: var(--muted); margin: 0 0 1.25rem; }
+.asset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 1rem; }
+.asset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.asset:hover { border-color: rgba(255, 79, 129, 0.45); transform: translateY(-3px); }
+.asset img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; }
+.asset--transparent img {
+  object-fit: contain;
+  background: repeating-conic-gradient(#1b1822 0% 25%, #121017 0% 50%) 50% / 20px 20px;
+}
+.asset span { font-weight: 600; display: flex; justify-content: space-between; gap: 0.5rem; }
+.asset small { color: var(--muted); font-weight: 500; }
+.highlights h3:first-of-type { margin-top: 0.5rem; }
+@media (max-width: 640px) {
+  .epk-hero { flex-direction: column; text-align: center !important; }
+  .epk-hero h1 { text-align: center; }
+  .epk-actions { justify-content: center; }
+}
+
+/* EPK one-sheet: Print / Save as PDF */
+@media print {
+  @page { margin: 14mm; }
+  html, body { background: #fff !important; color: #111 !important; }
+  body::before, body::after, .navbar, footer, .no-print, .modal, .music-card::after, .track-card::after { display: none !important; }
+  * { box-shadow: none !important; }
+  .epk-hero, .epk-facts, .bio, .highlights, .contact-section, .epk-assets, .music-section {
+    background: none !important; border: 0 !important; margin: 0 auto 6mm !important; padding: 0 !important;
+    width: 100% !important; max-width: none !important; break-inside: avoid;
+  }
+  .epk-hero { padding-top: 0 !important; }
+  h1, h2, h3, .fact-value, .release-title, .music-card h3, .track-card .track-title, .asset span { color: #111 !important; }
+  .eyebrow, .highlights h3, a { color: #c2185b !important; }
+  p, li, .bio p, .epk-tagline, .fact-label, .asset small { color: #333 !important; }
+  .fact { border: 1px solid #ddd !important; background: none !important; }
+  .epk-short-bio { background: #fbe9f0 !important; }
+  .music-grid { grid-template-columns: repeat(4, 1fr) !important; }
+  .track-card { border: 1px solid #ddd !important; background: none !important; }
+  .asset { border: 1px solid #ddd !important; }
+  .asset-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+.track-card .track-title {
+  position: static !important;
+  padding: 0 0.25rem 0.25rem !important;
+  background: none !important;
+  color: var(--text) !important;
+  text-align: left !important;
+  font: 600 0.95rem var(--font-body) !important;
+}
+#musicGrid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)) !important; }
+.bio, .bio p, .highlights, .contact-section { text-align: left !important; }
+.bio h2, .highlights h2, .contact-section h2 { text-align: left !important; }
+.epk-assets h2 { color: var(--text) !important; text-align: left !important; text-transform: none !important; }

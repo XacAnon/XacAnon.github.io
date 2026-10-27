@@ -10,11 +10,23 @@ if (/\.html$/.test(location.pathname)) {
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Music | Xac Anon</title>
-<link rel="icon" type="image/png" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta name="description" content="Stream every release from Xac Anon: singles, the album Purgatory, YouTube exclusives and features." />
+<link rel="canonical" href="https://www.xacanonmusic.com/music" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Xac Anon" />
+<meta property="og:title" content="Music | Xac Anon" />
+<meta property="og:description" content="Stream every release from Xac Anon: singles, the album Purgatory, YouTube exclusives and features." />
+<meta property="og:url" content="https://www.xacanonmusic.com/music" />
+<meta property="og:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Music | Xac Anon" />
+<meta name="twitter:description" content="Stream every release from Xac Anon: singles, the album Purgatory, YouTube exclusives and features." />
+<meta name="twitter:image" content="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
+<link rel="icon" type="image/jpeg" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Friz+Quadrata&family=Medici&display=swap" rel="stylesheet" />
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff4f81">
+<meta name="theme-color" content="#09080d">
 
 <style>
 body { margin:0; padding:0; font-family:'Friz Quadrata', serif; background:#0f0f0f; color:#f0f0f0; }
@@ -106,6 +118,7 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/theme.css" />
+<script src="/assets/release.js" defer></script>
 </head>
 <body>
 
@@ -121,7 +134,6 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
         <li><a href="/blog">Blog</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="https://shop.xacanonmusic.com" target="_blank" rel="noopener" data-text="Shop">Shop</a></li>
-        <li><a href="/construction" target="_blank" data-text="Members">Members</a></li>
       </ul>
     </div>
   </div>
@@ -132,7 +144,7 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
 </header>
 
 <div class="featured-container">
-  <a href="https://distrokid.com/hyperfollow/xacanon/olympus" class="presave-btn" target="_blank">Presave Latest Song/Album</a>
+  <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" class="presave-btn" id="presave-btn" target="_blank" rel="noopener"><i class="fab fa-spotify"></i> Listen on Spotify</a>
 </div>
 
 <section class="music-section yt-section">
@@ -212,8 +224,19 @@ footer { padding:3rem 1rem; background:#111; border-top:1px solid #ff4f81; text-
 })();
 </script>
 
-<footer>
-  <div>© 2026 Xac Anon | Musical Artist | Newcastle, NSW</div>
+<footer class="site-footer">
+  <div class="socials">
+    <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://open.spotify.com/artist/2u0UlmbzNuKCBNfueWuqsx" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+    <a href="https://music.apple.com/au/artist/xac-anon/1668739775" target="_blank" rel="noopener" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+    <a href="https://youtube.com/@XacAnon" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://soundcloud.com/xac-anon" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://www.tiktok.com/@xacanon" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/xacanonau" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://discord.gg/u6ARJDzu5X" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Xac Anon &middot; Newcastle, NSW &middot; <a href="mailto:business@xacanonmusic.com">business@xacanonmusic.com</a></p>
+  <p class="footer-credit">Website by Xachariah Anonymous</p>
 </footer>
 
 <script>
@@ -313,12 +336,12 @@ window.onclick = e => { if(e.target==document.getElementById("spotify-modal")) c
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 const _fbConfig = {
-  apiKey: "AIzaSyCHWMstWD8QwoT_kz2lBW8ZNXNlXerl-9c",
-  authDomain: "xacanonblog.firebaseapp.com",
-  projectId: "xacanonblog",
-  storageBucket: "xacanonblog.firebasestorage.app",
-  messagingSenderId: "319182532803",
-  appId: "1:319182532803:web:3a4d33372643dd71d5f276",
+  apiKey: "AIzaSyD5ErOWtxBdfL3Z0o_TwYnii1GflZ0fYdc",
+  authDomain: "xacanonwebsite.firebaseapp.com",
+  projectId: "xacanonwebsite",
+  storageBucket: "xacanonwebsite.firebasestorage.app",
+  messagingSenderId: "725682557903",
+  appId: "1:725682557903:web:f699e7cb0504a8d75478ba",
 };
 const _app = getApps().length ? getApps()[0] : initializeApp(_fbConfig);
 const _db = getFirestore(_app);
@@ -339,6 +362,25 @@ try {
     }
   }
 } catch(e) { console.warn("Nav loader:", e); }
+
+// Presave / latest release button: same source as the home page countdown
+try {
+  let _override = null;
+  const _cd = await getDoc(doc(_db, "siteSettings", "countdown")).catch(() => null);
+  if (_cd && _cd.exists() && _cd.data().releaseDate) {
+    const d = _cd.data();
+    _override = { label: d.label, releaseDate: d.releaseDate.toDate ? d.releaseDate.toDate() : new Date(d.releaseDate), presaveUrl: d.presaveUrl };
+  }
+  const r = await window.XacRelease.resolve(_override);
+  const btn = document.getElementById("presave-btn");
+  if (r && r.link && btn) {
+    const name = r.title || r.heading;
+    btn.href = r.link;
+    btn.innerHTML = r.mode === "upcoming"
+      ? `<i class="fas fa-bookmark"></i> Presave ${name}`
+      : `<i class="fas fa-headphones"></i> Listen to ${name}`;
+  }
+} catch(e) { console.warn("Release button:", e); }
 </script>
 </body>
 </html>

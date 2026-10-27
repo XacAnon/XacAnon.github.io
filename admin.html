@@ -14,7 +14,7 @@ if (/\.html$/.test(location.pathname)) {
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#09080d">
 
-<link rel="icon" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" type="image/png" />
+<link rel="icon" href="https://i.ibb.co/jPxV6BvR/Xac-Anon640x640.jpg" type="image/jpeg" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -361,8 +361,8 @@ input:checked + .toggle-slider::before { transform: translateX(24px); }
 
   <div id="countdown-tab" class="tab-content">
     <div class="card countdown-manager">
-      <h2 class="card-title"><i class="fas fa-hourglass-half"></i> Release countdown</h2>
-      <p class="card-sub">Shown in the intro on the home page.</p>
+      <h2 class="card-title"><i class="fas fa-hourglass-half"></i> Release countdown override</h2>
+      <p class="card-sub">The home page and Music page show your latest release automatically (checked against Apple Music every 6 hours). Only use this to count down to a release that isn't on Apple Music yet. Once the date passes, the site goes back to automatic.</p>
       <form id="countdown-form">
         <div class="field-row">
           <div class="field">
@@ -371,13 +371,17 @@ input:checked + .toggle-slider::before { transform: translateX(24px); }
           </div>
           <div class="field">
             <label for="countdown-date">Release date &amp; time</label>
-            <input type="datetime-local" id="countdown-date" required />
+            <input type="datetime-local" id="countdown-date" />
           </div>
+        </div>
+        <div class="field">
+          <label for="countdown-presave">Presave link (optional)</label>
+          <input type="text" id="countdown-presave" placeholder="https://distrokid.com/hyperfollow/xacanon/..." />
         </div>
         <label class="check"><input type="checkbox" id="countdown-visible" checked /> Show on homepage</label>
         <div class="actions">
           <button type="submit" class="btn-primary">Save Countdown</button>
-          <button type="button" id="countdown-delete-btn" class="btn-danger">Delete Countdown</button>
+          <button type="button" id="countdown-delete-btn" class="btn-danger">Clear Override</button>
           <span class="save-msg" id="save-msg">✓ Saved!</span>
         </div>
       </form>
@@ -397,12 +401,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCHWMstWD8QwoT_kz2lBW8ZNXNlXerl-9c",
-  authDomain: "xacanonblog.firebaseapp.com",
-  projectId: "xacanonblog",
-  storageBucket: "xacanonblog.firebasestorage.app",
-  messagingSenderId: "319182532803",
-  appId: "1:319182532803:web:3a4d33372643dd71d5f276",
+  apiKey: "AIzaSyD5ErOWtxBdfL3Z0o_TwYnii1GflZ0fYdc",
+  authDomain: "xacanonwebsite.firebaseapp.com",
+  projectId: "xacanonwebsite",
+  storageBucket: "xacanonwebsite.firebasestorage.app",
+  messagingSenderId: "725682557903",
+  appId: "1:725682557903:web:f699e7cb0504a8d75478ba",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -566,6 +570,7 @@ const loadCountdown = async () => {
       const data = snap.data();
       document.getElementById("countdown-label").value = data.label || "";
       document.getElementById("countdown-visible").checked = data.visible !== false;
+      document.getElementById("countdown-presave").value = data.presaveUrl || "";
       if (data.releaseDate) {
         const d = data.releaseDate.toDate ? data.releaseDate.toDate() : new Date(data.releaseDate);
         // Format as local datetime-local value
@@ -582,14 +587,13 @@ document.getElementById("countdown-form").addEventListener("submit", async e => 
   const label = document.getElementById("countdown-label").value.trim();
   const dateVal = document.getElementById("countdown-date").value;
   const visible = document.getElementById("countdown-visible").checked;
-  if (!dateVal) { alert("Please set a release date."); return; }
+  const presaveUrl = document.getElementById("countdown-presave").value.trim();
+  // No date = no override; just save whether the release card shows
+  const settings = dateVal
+    ? { label: label || "Next Release", releaseDate: Timestamp.fromDate(new Date(dateVal)), visible, presaveUrl, updatedAt: serverTimestamp() }
+    : { visible, updatedAt: serverTimestamp() };
   try {
-    await setDoc(countdownDocRef, {
-      label: label || "Next Release",
-      releaseDate: Timestamp.fromDate(new Date(dateVal)),
-      visible,
-      updatedAt: serverTimestamp(),
-    });
+    await setDoc(countdownDocRef, settings);
     const msg = document.getElementById("save-msg");
     msg.style.display = "inline";
     setTimeout(() => msg.style.display = "none", 3000);
@@ -598,14 +602,16 @@ document.getElementById("countdown-form").addEventListener("submit", async e => 
 
 // FIX: Countdown delete now works
 document.getElementById("countdown-delete-btn").addEventListener("click", async () => {
-  if (confirm("Delete the countdown? It will disappear from the homepage.")) {
+  if (confirm("Clear the countdown override? The site will go back to showing your latest release automatically.")) {
     try {
-      await setDoc(countdownDocRef, { visible: false, deletedAt: serverTimestamp() });
+      const visible = document.getElementById("countdown-visible").checked;
+      await setDoc(countdownDocRef, { visible, clearedAt: serverTimestamp() });
       document.getElementById("countdown-date").value = "";
       document.getElementById("countdown-label").value = "";
+      document.getElementById("countdown-presave").value = "";
       const msg = document.getElementById("save-msg");
       msg.style.display = "inline";
-      msg.textContent = "✓ Countdown hidden!";
+      msg.textContent = "✓ Override cleared!";
       setTimeout(() => { msg.style.display = "none"; msg.textContent = "✓ Saved!"; }, 3000);
     } catch (err) { alert("Error: " + err.message); }
   }

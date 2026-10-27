@@ -1,0 +1,42 @@
+name: Update latest release
+
+# Keeps data/latest-release.json (home countdown + music page presave button)
+# in sync with Apple Music. Runs every 6 hours; can also be started by hand from the
+# Actions tab with "Run workflow".
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: latest-release
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest release
+        run: python3 .github/scripts/update_release.py
+
+      - name: Commit and publish if changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- data/latest-release.json; then
+            echo "Release data unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/latest-release.json
+          git commit -m "Update latest release data"
+          git push
+          # Pushes made with the workflow token don't always rebuild Pages, so ask for a build.
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
