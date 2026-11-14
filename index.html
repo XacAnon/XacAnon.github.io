@@ -59,6 +59,7 @@ body { margin:0; font-family:'Friz Quadrata', serif; background:#0f0f0f; color:#
 .navbar { position: sticky; top:0; z-index:1000; background:#0f0f0f; border-bottom:1px solid #ff4f81; box-shadow:0 0 10px #ff4f81; }
 .navbar-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:0.8rem 2rem; height:60px; }
 .nav-logo img { height:50px; animation:pulseGlitch 2s infinite ease-in-out; }
+@keyframes maintFloat { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(1deg); } }
 @keyframes pulseGlitch { 0%,100%{filter:none;} 50%{filter:drop-shadow(0 0 6px #ff4f81); transform:scale(1.05);} }
 .nav-right { display:flex; align-items:center; gap:1rem; position:relative; }
 .home-button { color:#f0f0f0; text-decoration:none; font-size:1.1rem; padding:0.4rem 0.8rem; border:1px solid #ff4f81; border-radius:6px; position:relative; transition:0.3s; }
@@ -111,7 +112,7 @@ body { margin:0; font-family:'Friz Quadrata', serif; background:#0f0f0f; color:#
 /* ===== MAINTENANCE OVERLAY ===== */
 #maintenance-overlay { display:none; position:fixed; inset:0; z-index:9999; background:#0f0f0f; justify-content:center; align-items:center; flex-direction:column; text-align:center; padding:2rem; }
 #maintenance-overlay.active { display:flex; }
-.maint-logo { max-width:120px; border-radius:50%; margin-bottom:1.5rem; animation:pulseGlitch 2s infinite ease-in-out; }
+.maint-figure { width: min(220px, 60vw); height: auto; margin-bottom: 1.5rem; filter: drop-shadow(0 0 15px rgba(255, 79, 129, 0.4)); animation: maintFloat 4s infinite ease-in-out; }
 .maint-title { font-size:2.5rem; color:#ff4f81; margin:0 0 0.5rem; }
 .maint-sub { font-size:1rem; color:#aaa; margin:0 0 1.5rem; max-width:500px; }
 .maint-message { font-size:1.1rem; color:#f0f0f0; background:#1a1a1a; border:1px solid #ff4f81; border-radius:10px; padding:1rem 2rem; box-shadow:0 0 15px #ff4f81; max-width:480px; line-height:1.7; }
@@ -184,7 +185,7 @@ footer .socials a:hover::after { animation: glitchBottom 0.6s infinite linear al
 <body>
 
 <div id="maintenance-overlay">
-  <img src="/assets/img/xac-anon.jpg" alt="Xac Anon" class="maint-logo" />
+  <img src="/assets/img/xac-anon-character.png" alt="Xac Anon" class="maint-figure" />
   <h1 class="maint-title">Back Soon</h1>
   <p class="maint-sub">The site is currently undergoing maintenance.</p>
   <div class="maint-message" id="maint-message-text">We'll be back soon. Thanks for your patience!</div>

@@ -30,7 +30,7 @@
 
 <!-- MAINTENANCE OVERLAY (shared with all pages) -->
 <div id="maintenance-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:#0f0f0f;justify-content:center;align-items:center;flex-direction:column;text-align:center;padding:2rem;">
-  <img src="/assets/img/xac-anon.jpg" alt="Xac Anon" style="max-width:120px;border-radius:50%;margin-bottom:1.5rem;animation:pulseGlitch 2s infinite ease-in-out;" />
+  <img src="/assets/img/xac-anon-character.png" alt="Xac Anon" class="maint-figure" />
   <h1 style="color:#ff4f81;margin:0 0 0.5rem;font-size:2.5rem;text-transform:uppercase;letter-spacing:2px;">Back Soon</h1>
   <p style="color:#aaa;margin:0 0 1.5rem;font-size:1rem;">The site is currently undergoing maintenance.</p>
   <div id="maint-message-text" style="color:#f0f0f0;background:#1a1a1a;border:1px solid #ff4f81;border-radius:10px;padding:1rem 2rem;box-shadow:0 0 15px #ff4f81;max-width:480px;line-height:1.7;font-size:1.1rem;">We'll be back soon. Thanks for your patience!</div>
@@ -40,7 +40,7 @@
     <a href="https://youtube.com/@XacAnonRS" target="_blank" rel="noopener" style="color:#f0f0f0;font-size:1.6rem;"><i class="fab fa-youtube"></i></a>
   </div>
 </div>
-<style>@keyframes pulseGlitch { 0%,100%{filter:none;} 50%{filter:drop-shadow(0 0 6px #ff4f81); transform:scale(1.05);} }</style>
+<style>@keyframes maintFloat { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(1deg); } }.maint-figure { width: min(220px, 60vw); height: auto; margin-bottom: 1.5rem; filter: drop-shadow(0 0 15px rgba(255, 79, 129, 0.4)); animation: maintFloat 4s infinite ease-in-out; }</style>
 
 
 <main class="links-page">
