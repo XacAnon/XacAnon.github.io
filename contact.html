@@ -211,8 +211,8 @@ footer .socials-footer a:hover::after { animation: glitchBottom 0.6s infinite li
 (async () => {
   try {
     const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js");
-    const { getFirestore, doc, getDoc } = await import("https://www.gstatic.com/firebase-firestore.js");
-    const { getAuth, onAuthStateChanged } = await import("https://www.gstatic.com/firebase-auth.js");
+    const { getFirestore, doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js");
+    const { getAuth, onAuthStateChanged } = await import("https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js");
     const { checkMaintenance } = await import("/assets/maintenance.js");
 
     const _fbConfig = {
