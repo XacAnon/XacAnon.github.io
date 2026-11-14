@@ -99,6 +99,20 @@
 </head>
 <body>
 
+<!-- MAINTENANCE OVERLAY (shared with all pages) -->
+<div id="maintenance-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:#0f0f0f;justify-content:center;align-items:center;flex-direction:column;text-align:center;padding:2rem;">
+  <img src="/assets/img/xac-anon.jpg" alt="Xac Anon" style="max-width:120px;border-radius:50%;margin-bottom:1.5rem;animation:pulseGlitch 2s infinite ease-in-out;" />
+  <h1 style="color:#ff4f81;margin:0 0 0.5rem;font-size:2.5rem;text-transform:uppercase;letter-spacing:2px;">Back Soon</h1>
+  <p style="color:#aaa;margin:0 0 1.5rem;font-size:1rem;">The site is currently undergoing maintenance.</p>
+  <div id="maint-message-text" style="color:#f0f0f0;background:#1a1a1a;border:1px solid #ff4f81;border-radius:10px;padding:1rem 2rem;box-shadow:0 0 15px #ff4f81;max-width:480px;line-height:1.7;font-size:1.1rem;">We'll be back soon. Thanks for your patience!</div>
+  <div style="margin-top:2rem;display:flex;gap:1.2rem;justify-content:center;">
+    <a href="https://instagram.com/xacanon/" target="_blank" rel="noopener" style="color:#f0f0f0;font-size:1.6rem;"><i class="fab fa-instagram"></i></a>
+    <a href="https://x.com/xacanonau" target="_blank" rel="noopener" style="color:#f0f0f0;font-size:1.6rem;"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://youtube.com/@XacAnonRS" target="_blank" rel="noopener" style="color:#f0f0f0;font-size:1.6rem;"><i class="fab fa-youtube"></i></a>
+  </div>
+</div>
+<style>@keyframes pulseGlitch { 0%,100%{filter:none;} 50%{filter:drop-shadow(0 0 6px #ff4f81); transform:scale(1.05);} }</style>
+
 <div class="nf-glow" aria-hidden="true"></div>
 <main class="not-found">
   <img src="/assets/img/xac-anon-character.png" alt="Xac Anon" class="nf-figure" />
@@ -137,6 +151,28 @@
     line.append(code, " doesn't exist on xacanonmusic.com.");
   }
 })();
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebase-auth.js";
+import { checkMaintenance } from "/assets/maintenance.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD5ErOWtxBdfL3Z0o_TwYnii1GflZ0fYdc",
+  authDomain: "xacanonwebsite.firebaseapp.com",
+  projectId: "xacanonwebsite",
+  storageBucket: "xacanonwebsite.firebasestorage.app",
+  messagingSenderId: "725682557903",
+  appId: "1:725682557903:web:f699e7cb0504a8d75478ba",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+await checkMaintenance(db, auth);
 </script>
 
 </body>
